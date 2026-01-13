@@ -52,10 +52,10 @@ recognition_mission_tattol = Evento(
     bando="Alianza 🪯 ",
     fecha_inicio=hoy,
     fecha_fin=mañana,
-    recursos_requeridos_ids=["A001","A003","A005","A006"],
-    recursos_prohibidos_ids= ["A000","A002","A004","A007","A008","A009","A010","A011","A012"],
+    recursos_requeridos_ids=["A001","A005","A006"],
+    recursos_prohibidos_ids= ["A000","A002","A003","A007","A008","A009","A010","A011","A012"],
     descripcion= """Misión Secreta de la Rebelión donde la Princesa Leia 
-llevó los planos de la Estrella de la Muerte a Obi-Wan, 
+llevó los planos de la Estrella de la Muerte a Obi-Wan,
 por medio de un holograma transmitido por R2-D2 y C-3PO""")
 
 # [M002]
@@ -65,11 +65,11 @@ rescue_princess_leia = Evento(
     bando="Alianza 🪯 ",
     fecha_inicio=hoy,
     fecha_fin=mañana,
-    recursos_requeridos_ids=["A000","A002","A003","A010","A011"],
-    recursos_prohibidos_ids=["A001"],
-    descripcion=  """Misión crucial donde Luke Skywalker, 
-Han Solo y Chewbacca intentarán liberar a Leia 
-de la Celda 2187 de la Estrella de la Muerte.""") 
+    recursos_requeridos_ids=["A000","A002","A003","A004"],
+    recursos_prohibidos_ids=["A001","A008","A009","A012"],
+    descripcion=  """Misión crucial donde Luke Skywalker,
+Han Solo y Chewbacca intentarán liberar a Leia
+de la Celda 2187 de la Estrella de la Muerte.""")
 
 # [M003] 
 attack_death_star = Evento(
@@ -78,8 +78,8 @@ attack_death_star = Evento(
     bando="Alianza 🪯 ",
     fecha_inicio=hoy,
     fecha_fin=mañana,
-    recursos_requeridos_ids=["R001","R009","R011","R013"],
-    recursos_prohibidos_ids=[],
+    recursos_requeridos_ids=["A000","A008","A012"],
+    recursos_prohibidos_ids=["A004","A009"],
     descripcion= """Misión liderada por Luke Skywalker 
 para destruir la Estrella de la Muerte,
 estación espacial imperial del tamaño 
@@ -92,8 +92,8 @@ battle_hoth = Evento(
     bando="Alianza 🪯 ",
     fecha_inicio=hoy,
     fecha_fin=mañana,
-    recursos_requeridos_ids=["A001","A002","A008","A011"],
-    recursos_prohibidos_ids=[],
+    recursos_requeridos_ids=["A000","A001","A002"],
+    recursos_prohibidos_ids=["A004","A009"],
     descripcion= """Enfrentamiento en el gélido planeta Hoth, 
 donde el Imperio Galáctico ataca la Base Secreta 
 Rebelde para destruir su generador de escudo.""") 

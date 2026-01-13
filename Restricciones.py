@@ -11,12 +11,14 @@ restricciones = {
     "co_requisitos" : {
     "A005":"A006", # R2D2 Necesita a C-3PO [SIEMPRE ANDAN JUNTOS]
     "A006":"A005", # C-3PO Necesita a R2D2 (Viceversa) [SIEMPRE ANDAN JUNTOS]
-    "A008":"A012", # X-Wing Necesita un Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
-    "A012":"A008", # Traje de Piloto Necesita un X-Wing (Viceversa) [EL TRAJE SOLO LO USAS CUANDO VAS A VOLAR]
-    "A010":"A000", # Sable de luz necesita a Luke Skywalker [LUKE NECESITA SU SABLE PARA PELEAR]
-    "A000":"A010", # Luke Skywalker necesita a Sable de luz (Viceversa) [EL SABLE REQUIERE UN PORTADOR]
+    "A003":"A002", # Chewbacca siempre está junto a Han Solo
     "A002":"A011", # Han solo necesita su Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
     "A011":"A002", # Bláster necesita a Han Solo [CUALQUIER BLÁSTER NECESITA UN PORTADOR]
+    "A010":"A000", # Sable de luz necesita a Luke Skywalker [LUKE NECESITA SU SABLE PARA PELEAR]
+    "A000":"A010", # Luke Skywalker necesita a Sable de luz (Viceversa) [EL SABLE REQUIERE UN PORTADOR]
+    "A007":"A002",  # El Hálcón Milenario (nave) necesita al piloto (Han Solo)
+    "A008":"A012", # X-Wing Necesita un Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
+    "A012":"A008", # Traje de Piloto Necesita un X-Wing (Viceversa) [EL TRAJE SOLO LO USAS CUANDO VAS A VOLAR]
     },
     
     # Exclusiones : (recurso1,recurso2)

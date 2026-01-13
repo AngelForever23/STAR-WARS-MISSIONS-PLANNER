@@ -38,7 +38,7 @@ Imperio = False
 # Elegir un bando
 while True:
     try:
-        print(f"{Fore.YELLOW}{Style.BRIGHT}[STAR WARS MISSIONS PLANNER PROJECT 🚀]{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}{Style.BRIGHT}STAR WARS MISSIONS PLANNER PROJECT 🚀{Style.RESET_ALL}")
         print(f"\n{Style.BRIGHT}Hace mucho tiempo, en una galaxia muy, muy lejana...{Style.RESET_ALL} ")
         print(f"\n▶ Selecciona un Bando: ")
         print(f"\n1.{Fore.BLUE}{Style.BRIGHT} Alianza Rebelde 🪯{Style.RESET_ALL} \nUna coalición de mundos oprimidos que luchan por la libertad.\nOpera con recursos limitados pero con gran determinación.\nGolpea al Imperio con tácticas rápidas y precisas.\nÚnete si quieres devolverle la esperanza a la galaxia.")
@@ -48,8 +48,7 @@ while True:
             sonido1.play()
             pygame.mixer.music.load(light_side)
             pygame.mixer.music.play()
-            #Limpiamos la terminal
-            limpiar_terminal()
+            limpiar_terminal() #Limpiamos la terminal
             print("==================================")
             print(f"Seleción exitosa ✅ \n{Fore.BLUE}{Style.BRIGHT}Bienvenido a la Alianza Rebelde.{Style.RESET_ALL}")
             print("==================================")
@@ -81,7 +80,7 @@ while True:
         break
 
 # Sección de Cargando...
-def mostrar_cargando_y_limpiar(mensaje="Cargando"):
+def mostrar_cargando_y_limpiar(mensaje):
     print(f"\n{mensaje} ", end="", flush=True)
     for _ in range(3):
         print(".", end="", flush=True) 
@@ -89,7 +88,7 @@ def mostrar_cargando_y_limpiar(mensaje="Cargando"):
         time.sleep(1.5) 
     time.sleep(1.5)
     limpiar_terminal()
-mostrar_cargando_y_limpiar()
+mostrar_cargando_y_limpiar("Cargando")
 
 
 if Alianza == True:
@@ -105,9 +104,9 @@ limpiar_terminal()
 while True:
     try:
         if Alianza == True:
-            print(f"\n{Fore.BLUE}{Style.BRIGHT}[MENÚ PRINCIPAL DE LA ALIANZA ⚔️ ]{Style.RESET_ALL}")
+            print(f"\n{Fore.BLUE}{Style.BRIGHT}MENÚ PRINCIPAL DE LA ALIANZA ⚔️{Style.RESET_ALL}")
         elif Imperio == True:
-            print(f"\n{Fore.RED}{Style.BRIGHT}[MENÚ PRINCIPAL DEL IMPERIO 🤖]{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}{Style.BRIGHT}MENÚ PRINCIPAL DEL IMPERIO 🤖{Style.RESET_ALL}")
         print("\n1. Listar Misiones 📋\n2. Añadir Misión ➕\n3. Eliminar Misión ❌\n4. Ver Detalles 👀\n5. Salir 📤")
         opcion = int(input("\n▶ Tu opcion: "))
     
@@ -120,7 +119,7 @@ while True:
         elif opcion == 2:
             sonido1.play()
             limpiar_terminal()
-            pygame.mixer.music.stop()
+            pygame.mixer.music.stop() # Se detiene la música
             from añadir_mision import añadir_nueva_mision # Importar todo el módulo para añadir la misión
             pygame.mixer.music.load(light_side_mission)
             pygame.mixer.music.play(-1)
@@ -129,15 +128,16 @@ while True:
     
         elif opcion == 3:
             sonido1.play()
-            time.sleep(0.25)
-            print("En proceso")
-            salir_confirmado = True
+            limpiar_terminal()
+            from Eliminar_Mision import eliminar_mision
+            eliminar_mision()
+            salir_confirmado = False
     
         elif opcion == 4:
             sonido1.play()
-            time.sleep(0.25)
-            print("En proceso")
-            salir_confirmado = True
+            from detalles import ver_detalles
+            ver_detalles()
+            salir_confirmado = False
     
         elif opcion == 5: # Función de salir
             sonido4.play()
