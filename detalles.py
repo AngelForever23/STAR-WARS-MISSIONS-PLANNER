@@ -8,8 +8,6 @@ from musica_sonidos import sonido3
 
 # Importación de la limpieza de la terminal
 import os
-import time
-import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de "Bienvenido a Pygame"
 def limpiar_terminal():
     os.system('cls')
@@ -66,8 +64,9 @@ def ver_detalles():
                 else:
                     sonido2.play()
                     limpiar_terminal()
-                    print("============= INFO DE MISIONES ❇️  ============")
+                    print("============== INFO DE MISIONES ❇️  =============")
                     for x, mision_datos in enumerate(misiones_planificadas):
+                        print("------------------------------------------------")
                         print(f"❇️  {Fore.GREEN}{Style.BRIGHT}Misión{Style.RESET_ALL}: {mision_datos["nombre"]}")
                         print(f"🗓️  {Fore.BLUE}{Style.BRIGHT}Agenda{Style.RESET_ALL}: El {mision_datos["dia"]} | Duración ⏳: 1 día.")
                         print(f"📦 {Fore.YELLOW}{Style.BRIGHT}Recursos usados{Style.RESET_ALL}:")
@@ -77,7 +76,7 @@ def ver_detalles():
                                 if recurso.id == recurso_id:
                                     print(f"-> {recurso.nombre}")
                                     break
-                    print("===============================================")
+                    print("================================================")
                     input("\nPresiona Enter ↩️  para retroceder. ")
                     limpiar_terminal()
                     sonido2.play()
@@ -93,7 +92,7 @@ def ver_detalles():
                         contador = 0
                         num = 0
                         for x in range(len(recursos_alianza)):
-                            print(f"{num}. {recursos_alianza[contador].nombre}")
+                            print(f"{num}. {recursos_alianza[contador].nombre} | {recursos_alianza[contador].descripcion}")
                             contador += 1
                             num += 1
                         print("===========================")

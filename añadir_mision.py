@@ -262,8 +262,10 @@ def añadir_nueva_mision():
             print("6. Domingo")
             print("==============")
             print("\nPara agendar la misión en el Calendario Semanal:")
-            print("Elige un día de la semana (0-6):\n")
+            print("> Elige un día de la semana [0-6]:")
+            print("> Presiona [7] para agendar automáticamente:\n")
             opcion = int(input("▶  "))
+        
         except ValueError:
             limpiar_terminal()
             sonido3.play()
@@ -271,21 +273,62 @@ def añadir_nueva_mision():
             print("Opcion incorrecta ❌ vuelve a intentarlo")
             print("=========================================\n")
             continue
-        if opcion < 0 or opcion > 6:
+        
+        if opcion < 0 or opcion > 7:
             limpiar_terminal()
             sonido3.play()
             print("==========================================================")
             print("Error ⚠️  selecciona un número entre (0-6) para continuar.")
             print("==========================================================\n")
             continue
+        
         else:
             sonido1.play()
-            break
-
-    semana = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]
-    dia = semana[opcion] # EL DIA DE LA SEMANA QUE SELECCIONAMOS <<<
-
-
+            
+            if opcion == 7: # Sección de "BUSCAR UN HUECO"
+                def buscar_hueco_automatico():
+                    semana = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]
+                    for dia in semana:
+                        todos_disponibles = True
+                        for x in recursos_seleccionados:
+                            for recurso in recursos_alianza:
+                                if recurso.id == x:
+                                    veces_seleccionado = len(recurso.agenda[dia])
+                                    cantidad_necesaria = recursos_seleccionados.count(x)
+                                    if veces_seleccionado + cantidad_necesaria > recurso.cantidad:
+                                        todos_disponibles = False
+                                        break
+                            if todos_disponibles == False:
+                                break
+                        if todos_disponibles == True:
+                            return dia
+                    return None
+                dia = buscar_hueco_automatico() # DIA SELECCIONADO AUTOMÁTICAMENTE
+                
+                if dia == None: # Excepción ()
+                    limpiar_terminal()
+                    sonido3.play()
+                    print("=================================================")
+                    print("⚠️  No hay días disponibles para esta misión")
+                    print("Todos los recursos están ocupados toda la semana")
+                    print("=================================================")
+                    print("Opciones:\n")
+                    print("1. Intentar con otros recursos.")
+                    print("2. Eliminar una misión para liberar espacio.")
+                    input("\nPresiona Enter ↩️  para volver al Ménu  ")
+                    sonido2.play()
+                    limpiar_terminal()
+                    pygame.mixer.music.load(light_side_menu)
+                    pygame.mixer.music.play(-1)
+                    return
+                
+                break # Si llegó hasta el break no hubo ningún problema y continúa el código
+            
+            elif opcion >= 0 or opcion <= 6: # Sección de selección manual
+                semana = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]
+                dia = semana[opcion]
+                break
+    
     def validar_horario_recursos_seleccionados():
         pygame.mixer.music.set_volume(0.30) # 30% del Volumen de la Música de fondo
         contador_seleccion = Counter(recursos_seleccionados_sin_duplicados)

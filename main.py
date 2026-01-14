@@ -7,6 +7,16 @@ def limpiar_terminal():
     os.system('cls')
 limpiar_terminal()
 
+# Sección de Cargando...
+def mostrar_cargando_y_limpiar(mensaje):
+    print(f"\n{mensaje} ", end="", flush=True)
+    for _ in range(3):
+        print(".", end="", flush=True) 
+        sys.stdout.flush()
+        time.sleep(1.5) 
+    time.sleep(1.5)
+    limpiar_terminal()
+
 # Importación de los colores para los textos
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
@@ -28,14 +38,38 @@ from musica_sonidos import sonido3
 from musica_sonidos import sonido4
 from musica_sonidos import sonido5
 
-pygame.mixer.music.load(star_wars_intro) # Suena la música 😎 "ESTO VA A SER ÉPICO PAPUS"
-pygame.mixer.music.play(-1)
+from persistencia import cargar_estado
+estado_cargado = cargar_estado()
+
+# Pantalla de incio 1 (Empiezas por primera vez o juegas tu partida guardada)
+if estado_cargado == False:
+    print(f"Bienvenido/a. ")
+    mostrar_cargando_y_limpiar("Iniciando una nueva partida")
+    limpiar_terminal()
+    print(f"{Fore.WHITE}{Style.BRIGHT}{Back.WHITE} AF STUDIO {Style.RESET_ALL}")
+    time.sleep(1.5)
+    print(f"{Fore.WHITE}{Style.BRIGHT} Presenta{Style.RESET_ALL}")
+    time.sleep(2.5)
+    limpiar_terminal()
+elif estado_cargado == True:
+    print("Datos cargados exitosamente ✅")
+    mostrar_cargando_y_limpiar("Cargando partida guardada")
+    limpiar_terminal()
+    print(f"{Fore.WHITE}{Style.BRIGHT}{Back.WHITE} AF STUDIO {Style.RESET_ALL}")
+    time.sleep(1.5)
+    print(f"{Fore.WHITE}{Style.BRIGHT} Presenta{Style.RESET_ALL}")
+    time.sleep(2.5)
+    limpiar_terminal()
 
 # Variables bandera
 Alianza = False
 Imperio = False
 
-# Elegir un bando
+# Comienza la música a sonar
+pygame.mixer.music.load(star_wars_intro)
+pygame.mixer.music.play(-1)
+
+# Pantalla de inicio 2 (Elegir un bando)
 while True:
     try:
         print(f"{Fore.YELLOW}{Style.BRIGHT}STAR WARS MISSIONS PLANNER PROJECT 🚀{Style.RESET_ALL}")
@@ -79,15 +113,7 @@ while True:
     else:
         break
 
-# Sección de Cargando...
-def mostrar_cargando_y_limpiar(mensaje):
-    print(f"\n{mensaje} ", end="", flush=True)
-    for _ in range(3):
-        print(".", end="", flush=True) 
-        sys.stdout.flush()
-        time.sleep(1.5) 
-    time.sleep(1.5)
-    limpiar_terminal()
+
 mostrar_cargando_y_limpiar("Cargando")
 
 
@@ -156,10 +182,15 @@ while True:
                         print("==================================")
                         print("Que la Fuerza te acompañe ✒️  (...)")
                         print("==================================")
+                        print("\nTu partida está siendo guardada en estos momentos 💾 ⬇️")
+                        from persistencia import guardar_estado
+                        guardar_estado()
                         time.sleep(1.25)
-                        print("\nHas salido de la aplicación.")
+                        print("Completado ✅")
+                        print("\nSaliendo de la aplicación.")
                         time.sleep(1.5)
                         salir_confirmado = True
+                        
                         break
                     
                     elif preguntar == 2:

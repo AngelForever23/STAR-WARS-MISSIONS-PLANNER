@@ -1,4 +1,4 @@
-# Clase Recurso para asignar las propiedades y funciones de los onjetos
+# Clase Recurso para asignar las propiedades y funciones de los objetos
 class Recurso:
     def __init__(self, id_recurso: str, nombre: str, nombre_inventario: str, tipo_recurso: str, bando: str,  cantidad: int, sonido, descripcion: str = ""):
         self.id = id_recurso # Identificador único del recurso
@@ -18,33 +18,24 @@ class Recurso:
             "Sábado": [],
             "Domingo": []
         }
-        # Atributo clave para la persistencia: agenda del recurso
-        # Se llenará con instancias de Evento para rastrear cuándo está ocupado.
-        # {fecha_inicio: Evento_asociado, fecha_fin: Evento_asociado}
     
-    def __str__(self):
-        return f"{self.nombre} | Cant. Disponible: {self.cantidad} | ({self.bando}) | [ID: {self.id}]" # Devuelve una representación legible para el usuario.
-    
+    # Esta función es importante ya que en un json no se pueden guardar los objetos (POO),
+    # así que la transformamos en un diccionario.
     def diccionario(self): # Serializa el objeto para guardarlo en JSON.
         return {
-            "id": self.id,
             "nombre": self.nombre,
-            "bando": self.bando,
-            "cantidad": self.cantidad,
-            "descripcion": self.descripcion
-            # NOTA: La agenda (eventos planificados) se maneja mejor en la clase principal main
-            # para evitar referencias circulares en JSON. Aquí solo guardamos metadatos del recurso.
+            "agenda": self.agenda
         }
 
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de bienvenida de pygame
+
 # Importamos pygame (Para reproducir música) 
 import pygame
 pygame.mixer.init()
-
 from musica_sonidos import resourse_sounds
 
-# Recursos de la República
+# Recursos de la Alianza
 luke_skywalker = Recurso("A000", "Luke Skywalker 👤", "Luke Skywalker   👤",  "(Personaje)", "Alianza", 1, resourse_sounds[0],
                         "Héroe y Jedi protagonista de Star Wars.")
 princesa_leia = Recurso("A001", "Princesa Leia 👤", "Princesa Leia    👤", "(Personaje)", "Alianza", 1, resourse_sounds[1],

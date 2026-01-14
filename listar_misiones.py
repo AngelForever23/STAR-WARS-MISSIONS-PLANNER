@@ -1,4 +1,3 @@
-from Recursos_Alianza import recursos_alianza
 from musica_sonidos import sonido2
 
 # Importación de los colores para los textos
@@ -13,7 +12,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de "
 
 misiones_planificadas = [] # Aquí se almacenan los datos importantes de las misiones agendadas
 
-# Guarda una misión agendada en el estado global
+# Guardar una misión agendada en el estado global
 def agregar_mision_para_agendar(id_mision, nombre_mision, dia_semana, recursos_usados_ids):
     mision_info = {
         "id": id_mision,
@@ -23,7 +22,7 @@ def agregar_mision_para_agendar(id_mision, nombre_mision, dia_semana, recursos_u
     }
     misiones_planificadas.append(mision_info)
 
-# Retorna todas las misiones agendadas
+# Retornar todas las misiones agendadas
 def obtener_misiones_agendadas():
     return misiones_planificadas
 
@@ -51,7 +50,7 @@ def mostrar_misiones_agendadas():
     for x, mision_datos in enumerate(misiones_planificadas):
         print(f"❇️  {Fore.GREEN}{Style.BRIGHT}Misión{Style.RESET_ALL}: {mision_datos["nombre"]}")
         print("-------------------------------------------------------")
-    input("\nPresiona Enter ↩️  para volver al menú principal ")
+    input("\nPresiona Enter ↩️   para volver al menú principal ")
     sonido2.play()
     limpiar_terminal()
     return
