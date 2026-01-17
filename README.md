@@ -40,14 +40,10 @@ Seguido se te mostrará un Menú con todas las opciones disponibles:
 
 4. EXTRA ✨
 - Descargar todas las péliculas y series gratis (Requiere VPN en Cuba):
-============================================
 https://lucasltd66.wixsite.com/laswmovies 🔗
-============================================
 
 - Datos de interés sobre Star Wars (Wookieepedia | Fandom) 
-==============================
 https://starwars.fandom.com 🔗
-==============================
 
 ¡DISFRUTA!
 Si te ha gustado este proyecto, agradecería que me dejaras una ⭐ al proyecto en Github 😺.
