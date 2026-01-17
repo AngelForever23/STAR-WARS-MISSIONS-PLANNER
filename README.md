@@ -4,13 +4,15 @@
 STAR WARS MISSIONS PLANNER es una aplicación/videojuego de **consola (CLI)** desarrollada por "AF STUDIO" en Python que permite agendar misiones **(eventos)** del universo de Star Wars en un intervalo de tiempo con un **Calendario Semanal**, usando los **recursos** disponibles del inventario (Personajes,Droides,Naves,Equipos...).
 Este proyecto, está basado en la trilogía original de las Películas de la SAGA (Episodio IV, V y VI). Este fue el dominio escogido, debido a que el desarrollador es fan de Star Wars y le gustaba la idea de llevar a cabo una de sus aficciones favoritas al mundo de la programación.
 
-IMPORTANTE ⚠️:
+⚠️ IMPORTANTE:
 Este proyecto utiliza las siguientes librerías 📚:
 - pygame (Música y sonidos) [Para instalarla en tu editor de código escribe en la terminal: pip install pygame]
 - colorama (Strings en color) [Para instalarla en tu editor de código escribe en la terminal: pip install colorama]
 - pyfiglet (Texto de presentación estilo ASCII ART) [Para instalarla en tu editor de código escribe en la terminal: pip install pyfiglet]
 - json (Guardar los datos) [Viene por defecto con Python]
 
+Para instalar todas las librerías necesarias de un "tirón" escribe lo siguiente en la terminal:
+pip install -r requirements.txt
 
 2. Sobre las MISIONES , RECURSOS y RESTRICCIONES 👀:
 
