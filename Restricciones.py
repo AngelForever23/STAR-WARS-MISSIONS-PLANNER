@@ -1,36 +1,30 @@
-# Importación de la limpieza de la terminal
-import os
-import time
-import sys
-def limpiar_terminal():
-    os.system('cls')
+from utilidades import limpiar_terminal
 
 """ Reglas 📋 del Dominio de STAR WARS 🌌 """
 restricciones = {
     # Co-requisitos: {recurso_principal : recurso_necesario}
     "co_requisitos" : {
-    "A005":"A006", # R2D2 Necesita a C-3PO [SIEMPRE ANDAN JUNTOS]
-    "A006":"A005", # C-3PO Necesita a R2D2 (Viceversa) [SIEMPRE ANDAN JUNTOS]
-    "A003":"A002", # Chewbacca siempre está junto a Han Solo
-    "A002":"A011", # Han solo necesita su Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
-    "A011":"A002", # Bláster necesita a Han Solo [CUALQUIER BLÁSTER NECESITA UN PORTADOR]
-    "A010":"A000", # Sable de luz necesita a Luke Skywalker [LUKE NECESITA SU SABLE PARA PELEAR]
-    "A000":"A010", # Luke Skywalker necesita a Sable de luz (Viceversa) [EL SABLE REQUIERE UN PORTADOR]
-    "A007":"A002",  # El Hálcón Milenario (nave) necesita al piloto (Han Solo)
-    "A008":"A012", # X-Wing Necesita un Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
-    "A012":"A008", # Traje de Piloto Necesita un X-Wing (Viceversa) [EL TRAJE SOLO LO USAS CUANDO VAS A VOLAR]
+    "A000":"A011", # Luke Skywalker ↔️ Sable de luz [LUKE NECESITA SU SABLE PARA PELEAR]
+    "A011":"A000",
+    "A003":"A012", # Han ↔️ Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
+    "A012":"A003",
+    "A003":"A008",  # Han Solo ➡️ Hálcón Milenario [TANTO HAN SOLO COMO LANDO MANEJAN EL HALCÓN MILENARIO]
+    "A005":"A008", # Lando ➡️ Halcón Milenario [TANTO LANDO COMO HAN SOLO MANEJAN EL HALCÓN MILENARIO]
+    "A006":"A007", # R2D2 ↔️ C-3PO [SIEMPRE ANDAN JUNTOS]
+    "A007":"A006",
+    "A009":"A013", # X-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
+    "A010":"A013", # A-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
+    "A016": "A003",  # Equipo de Camuflaje ➡️ Han Solo [Lo usa en Endor]
     },
     
     # Exclusiones : (recurso1,recurso2)
     "exclusiones":[
-        ("A000","I001"), # Luke y Vader no pueden estar juntos
-        ("A007","I003") # Halcón Milenario no puede estar con TIE Fighters
+        ("A003","A005"), # Han ❌ Lando (tensión por el Halcón, rivales de Sabacc)
+        ("A015", "A014") # Detonadores ❌ Escudo Deflector (riesgo de explosión propia)
     ]
 }
 
 
-# co_requisitos
-# {'A005': 'A006', 'A006': 'A005', 'A008': 'A012', 'A012': 'A008', 'A010': 'A000', 'A000': 'A010'}
 def validar_co_requisitos(recursos_seleccionados, correquisito = restricciones["co_requisitos"]):
     for recurso in recursos_seleccionados: # Recorremos cada recurso seleccionado
         if recurso in correquisito: # ¿Este recurso tiene un correquisito?
@@ -38,7 +32,7 @@ def validar_co_requisitos(recursos_seleccionados, correquisito = restricciones["
             if recurso_necesario not in recursos_seleccionados: # ¿El recurso necesario está en la selección?
                 limpiar_terminal()
                 print("==================================================================")
-                print(f"Error ⚠️  , {recurso} necesita a {recurso_necesario}\nTus recursos seleccionados no cumplen la regla de co-requisito ❌")
+                print(f"⚠️  Error: {recurso} necesita a {recurso_necesario}\nTus recursos seleccionados no cumplen la regla de co-requisito ❌")
                 return False
     # Si llegó hasta aquí no hubo ningún problema
     limpiar_terminal()
@@ -46,12 +40,13 @@ def validar_co_requisitos(recursos_seleccionados, correquisito = restricciones["
     print("Tus recuros seleccionados cumplen la regla de co-requisito ✅")
     return True
 
-# [('A000', 'I001'), ('A007', 'I003')]
+
 def validar_exclusiones(recursos_seleccionados, exclusion = restricciones["exclusiones"]):
     for recurso1,recurso2 in exclusion: # Tomamos los valores de cada tupla de las exclusiones
         if recurso1 in recursos_seleccionados and recurso2 in recursos_seleccionados: # Si los recursos conflictivos están en la selección informamos el error
-                    print(f"\n⚠️  Error: {recurso1} y {recurso2} no pueden estar en la misma misión")
+                    print(f"⚠️  Error: {recurso1} y {recurso2} no pueden estar en la misma misión")
                     print("Tus recursos seleccionados NO cumplen la regla de exclusión mutua ❌")
                     return False
     print("Tus recursos seleccionados cumplen la regla exclusión mutua ✅")
     return True
+

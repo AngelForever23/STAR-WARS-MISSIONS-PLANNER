@@ -1,18 +1,16 @@
-# Importamos todo lo que nos hace falta
-from Recursos_Alianza import recursos_alianza
-from Misiones_Alianza import misiones_alianza
-from Restricciones import validar_co_requisitos,validar_exclusiones
+from recursos import recursos_alianza
+from misiones import misiones_alianza
+from restricciones import validar_co_requisitos,validar_exclusiones
 from collections import Counter
-
-# Módulo necesarios para la limpieza de la terminal
-import os
+from utilidades import limpiar_terminal
+from utilidades import mostrar_cargando_y_limpiar
 import time
-import sys
-def limpiar_terminal():
-    os.system('cls')
 
+from colorama import Fore, Back, Style, init # Importar librería de colores para strings
+init(autoreset=True)
 
 # Módulo pygame (para reproducir los sonidos)
+import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de "Bienvenido a Pygame".
 import pygame
 pygame.mixer.init()
@@ -30,10 +28,10 @@ from musica_sonidos import sonido3
 pygame.mixer.music.stop()
 limpiar_terminal()
 
-def añadir_nueva_mision():
-    # Sección para seleccionar una Misión
-    while True: # Manejando las excepciones
-        if len(misiones_alianza) == 0:
+def añadir_nueva_mision(): # Sección para seleccionar una Misión
+    
+    while True:
+        if len(misiones_alianza) == 0: # Excepción (Ya se asignaron todas las misiones)
             time.sleep(0.5)
             sonido3.play()
             pygame.mixer.music.stop()
@@ -48,13 +46,14 @@ def añadir_nueva_mision():
             limpiar_terminal()
             return
         
-        try:
+        try: # Mostar las misiones disponibles
+            
             print("========= MISIONES DISPONIBLES DE LA ALIANZA ❇️  =========")
             contador = 0
             numero = 0
             print("---------------------------------------------------------")
             for x in range(len(misiones_alianza)): # Mostramos las misiones que tenemos disponible ahora
-                print(f"{numero}. {misiones_alianza[contador].nombre} | ID: [{misiones_alianza[contador].id}]")
+                print(f"{numero}. {Style.BRIGHT}{misiones_alianza[contador].nombre}{Style.RESET_ALL} | ID: [{misiones_alianza[contador].id}]")
                 contador += 1
                 numero += 1
                 print("---------------------------------------------------------")
@@ -63,7 +62,8 @@ def añadir_nueva_mision():
             print(f"\nSelecciona la Misión que deseas agendar (0-{len(misiones_alianza) - 1})")
             print("[-1] Volver Atrás ↩️")
             
-            numero = int(input("\n▶  ")) # Entrada de la misión
+            numero = int(input("\n▶  ")) # Selección de la misión para agendar
+            
         except ValueError:
             limpiar_terminal()
             sonido3.play()
@@ -89,24 +89,15 @@ def añadir_nueva_mision():
         else:
             sonido1.play()
             limpiar_terminal()
-            print(f"\nMisión seleccionada ✅ \n{misiones_alianza[numero].nombre}")
+            print(f"\nMisión seleccionada ✅ \n{Style.BRIGHT}{misiones_alianza[numero].nombre}{Style.RESET_ALL}")
             break
 
     mision = misiones_alianza[numero].id # AQUÍ SE GUARDA EL ID DE LA MISIÓN <<<
 
-    # Menú de Carga
-    def mostrar_cargando_y_limpiar(mensaje):
-        print(f"\n{mensaje} ", end="", flush=True)
-        for _ in range(3):
-            print(".", end="", flush=True) 
-            sys.stdout.flush()
-            time.sleep(1) 
-        limpiar_terminal()
     mostrar_cargando_y_limpiar("Planificando la Misión") # Sección de Cargando...
-    
+
     # Sección para seleccionar los recursos
-    # Manejamos las excepciones, aquí el usuario puede meter la pata de muchas formas.
-    while True:
+    while True: # Manejamos las excepciones, aquí el usuario puede meter la pata de muchas formas.
         error = False
         try:
             # Ver el inventario completo de la alianza
@@ -114,16 +105,16 @@ def añadir_nueva_mision():
             contador = 0
             num = 0
             for x in range(len(recursos_alianza)):
-                print(f"{num}. {recursos_alianza[contador].nombre_inventario} {recursos_alianza[contador].tipo_recurso} | ID: [{recursos_alianza[contador].id}] | Unidad/es: [{recursos_alianza[contador].cantidad}]")
+                print(f"{num}. {Fore.YELLOW}{Style.BRIGHT}{recursos_alianza[contador].nombre_inventario}{Style.RESET_ALL} {recursos_alianza[contador].tipo_recurso} | ID: [{recursos_alianza[contador].id}] | Unidad/es: [{recursos_alianza[contador].cantidad}]")
                 contador += 1
                 num += 1
             print("=================================================================")
             
-            print(f"\n{misiones_alianza[numero].nombre}")
-            print("< DESCRIPCIÓN >")
-            print(misiones_alianza[numero].descripcion)
+            print(f"\n{Style.BRIGHT}{misiones_alianza[numero].nombre}{Style.RESET_ALL}")
+            print(f"{Style.BRIGHT}< DESCRIPCIÓN >{Style.RESET_ALL}")
+            print(f"{Style.BRIGHT}{misiones_alianza[numero].descripcion}{Style.RESET_ALL}")
             
-            print(f"\n< INSTRUCCIONES >")
+            print(f"\n{Style.BRIGHT}< INSTRUCCIONES >{Style.RESET_ALL}")
             print(f"1. Escoge el recurso deseado para la misión seleccionando un número en el rango del (0 - {len(recursos_alianza) - 1}).") 
             print(">>> EJEMPLO: 1 [Princesa Leia]")
             print("2. Para asignar varios recursos, cada número debe estar separado por comas (,)")
@@ -156,11 +147,11 @@ def añadir_nueva_mision():
             print("==============================================================\n")
             continue
             
-        if (len(seleccion)) > 10:
+        if (len(seleccion)) > 12:
             limpiar_terminal()
             sonido3.play()
             print("==============================================================")
-            print(f"⚠️  Error. No puedes seleccionar más de {len(recursos_alianza) - 1} recursos por misión.")
+            print(f"⚠️  Error. No puedes seleccionar más de {len(seleccion) - 1} recursos por misión.")
             print("==============================================================\n")
             continue
         
@@ -278,7 +269,7 @@ def añadir_nueva_mision():
             limpiar_terminal()
             sonido3.play()
             print("==========================================================")
-            print("Error ⚠️  selecciona un número entre (0-6) para continuar.")
+            print("Error ⚠️  selecciona un número entre (0-7) para continuar.")
             print("==========================================================\n")
             continue
         
@@ -305,7 +296,7 @@ def añadir_nueva_mision():
                     return None
                 dia = buscar_hueco_automatico() # DIA SELECCIONADO AUTOMÁTICAMENTE
                 
-                if dia == None: # Excepción ()
+                if dia == None: # Excepción (Todo los recursos están ocupados en la semana)
                     limpiar_terminal()
                     sonido3.play()
                     print("=================================================")
@@ -329,9 +320,12 @@ def añadir_nueva_mision():
                 dia = semana[opcion]
                 break
     
+    # Sección para verificar si un recurso está o no en dos misiones a la vez en el mismo día
     def validar_horario_recursos_seleccionados():
-        pygame.mixer.music.set_volume(0.30) # 30% del Volumen de la Música de fondo
+        limpiar_terminal()
+        pygame.mixer.music.set_volume(0.25) # 25% del Volumen de la Música de fondo para no saturar los sonidos de los recursos
         contador_seleccion = Counter(recursos_seleccionados_sin_duplicados)
+        
         # Verificar conflictos y agendar
         for recurso_seleccion_id, cantidad_necesaria in contador_seleccion.items():
             for recurso in recursos_alianza:
@@ -346,44 +340,36 @@ def añadir_nueva_mision():
                         print(f">> Asegúrate que {recurso.nombre} esté libre el {dia}.")
                         print("========================================================")
                         return False
+                    
                     else:
                         
                         for x in range(cantidad_necesaria):
                             recurso.agenda[dia].append(mision) # Ahora tienen una misión que cumplir
                         recurso.sonido.play() # Reproducir sonido o frase del recurso
-                        print(f"✅ {recurso.nombre} ahora tiene la misión agendada para el {dia}.")
+                        print(f"✅ {Style.BRIGHT}{recurso.nombre}{Style.RESET_ALL} ahora tiene la misión agendada para el {Fore.YELLOW}{Style.BRIGHT}{dia}{Style.RESET_ALL}.")
                         print(f"Unidades restantes para el {dia}: [{recurso.cantidad - cantidad_necesaria}].\n")
                         time.sleep(3.7)
         
         pygame.mixer.music.set_volume(1.0) # 100% del Volumen de la música de fondo
-        return True # Si llegamos hasta aquí, los recursos seleccionados pueden hacer la misión el día que seleccionaste
+        return True # Si llegamos hasta aquí, los recursos seleccionados pueden hacer la misión el día seleccionado
 
-    # Terera sección de cargando (Última)
-    def mostrar_cargando_y_limpiar(mensaje=f"Agendando la misión para el {dia}"):
-        print(f"\n{mensaje} ", end="", flush=True)
-        for _ in range(3):
-            print(".", end="", flush=True) 
-            sys.stdout.flush()
-            time.sleep(1.5) 
-        time.sleep(2)
-    limpiar_terminal()
-
-    # Si todo salió bien, elimnamos la misión que seleccionamos de las misiones disponibles. 
-    # Porque en el universo de star wars cada misión es única, no podemos rescatar a Leia el lunes y después volverla a rescatar el martes
+    # Si todo salió bien, elimnamos la misión que seleccionamos de las misiones disponibles.
+    # Porque en el universo de Star Wars cada misión es única, no podemos rescatar a Leia el lunes y después volverla a rescatar el martes
     resultado = validar_horario_recursos_seleccionados()
+    
     if resultado == True:
-        mostrar_cargando_y_limpiar() # Sección de cargando 3
+        mostrar_cargando_y_limpiar("Agendando la misión")
         pygame.mixer.music.stop
         pygame.mixer.music.load(mision_exito_alianza)
         pygame.mixer.music.play()
-        print("\nLA MISIÓN HA SIDO AGENDADA EXITOSAMENTE 🎉.")
+        print(f"\n{Fore.YELLOW}{Style.BRIGHT}LA MISIÓN HA SIDO AGENDADA EXITOSAMENTE 🎉{Style.RESET_ALL}.")
         time.sleep(5)
         
         # Agendamos la misión y la eliminamos de misiones de la alianza
         from listar_misiones import agregar_mision_para_agendar
         agregar_mision_para_agendar(mision,misiones_alianza[numero].nombre,dia,recursos_seleccionados_sin_duplicados)
         misiones_eliminadas = misiones_alianza[numero]
-        from Eliminar_Mision import obtener_misiones_eliminadas
+        from eliminar_mision import obtener_misiones_eliminadas
         obtener_misiones_eliminadas(misiones_eliminadas)
         misiones_alianza.pop(numero) # Borramos la misión de las misiones de la alianza
         
@@ -398,15 +384,15 @@ def añadir_nueva_mision():
                     sonido1.play()
                     pygame.mixer.music.load(light_side_mission)
                     pygame.mixer.music.play(-1)
-                    from añadir_mision import añadir_nueva_mision
-                    añadir_nueva_mision() # Reiniciamos el módulo
-                    break
+                    return "agendar_otra_mision"
+                
                 elif opcion_final == 2:
                     sonido2.play()
                     limpiar_terminal()
                     pygame.mixer.music.load(light_side_menu)
                     pygame.mixer.music.play(-1)
-                    break
+                    return "menu"
+                
                 elif opcion_final > 2 or opcion_final < 1:
                     limpiar_terminal()
                     sonido3.play()
@@ -414,7 +400,8 @@ def añadir_nueva_mision():
                     print("Error ⚠️  Selecciona (1) o (2) para continuar.")
                     print("=============================================")
                     continue
-            except:
+                
+            except ValueError:
                 limpiar_terminal()
                 sonido3.play()
                 print("=======================================")
@@ -422,8 +409,9 @@ def añadir_nueva_mision():
                 print("=======================================")
                 continue
         
-    if resultado == False:
-        while True: # Sección para regresar al menú o agendar otra misión
+    if resultado == False: # Si hubo un error a la hora de agendar una misión...
+        
+        while True: # Sección para regresar al menú o agendar otra misión (Intentarlo nuevamente)
             print("\n¿Qué deseas hacer?")
             print("1. Intentarlo de nuevo 🔄️")
             print("2. Volver al menú principal 🏠")
@@ -434,15 +422,15 @@ def añadir_nueva_mision():
                     sonido1.play()
                     pygame.mixer.music.load(light_side_mission)
                     pygame.mixer.music.play(-1)
-                    from añadir_mision import añadir_nueva_mision
-                    añadir_nueva_mision() # Reiniciamos el módulo
-                    break
+                    return "reintentar"
+                
                 elif opcion_final == 2:
                     limpiar_terminal()
                     sonido2.play()
                     pygame.mixer.music.load(light_side_menu)
                     pygame.mixer.music.play(-1)
-                    break
+                    return "menu"
+                
                 elif opcion_final > 2 or opcion_final < 1:
                     limpiar_terminal()
                     sonido3.play()
@@ -450,7 +438,8 @@ def añadir_nueva_mision():
                     print("Error ⚠️  Selecciona (1) o (2) para continuar.")
                     print("=============================================")
                     continue
-            except:
+                
+            except ValueError:
                 limpiar_terminal()
                 sonido3.play()
                 print("=======================================")

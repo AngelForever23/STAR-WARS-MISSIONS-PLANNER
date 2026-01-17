@@ -1,26 +1,21 @@
 from listar_misiones import misiones_planificadas
-from Recursos_Alianza import recursos_alianza
-from Misiones_Alianza import misiones_alianza
+from recursos import recursos_alianza
+from utilidades import limpiar_terminal
 
 from musica_sonidos import sonido1
 from musica_sonidos import sonido2
 from musica_sonidos import sonido3
 
-# Importación de la limpieza de la terminal
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de "Bienvenido a Pygame"
-def limpiar_terminal():
-    os.system('cls')
-limpiar_terminal()
 
-# Importación de los colores para los textos
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Back, Style, init # Importar librería de colores para strings
 init(autoreset=True)
 
 def ver_detalles():
     limpiar_terminal()
     while True:
-        try:
+        try: # El usuario selecciona que desea hacer
             print("VER DETALLES SOBRE...")
             print("\n1. ❇️  Misiones Agendadas \n2. 📦 Recursos")
             print("\n[-1] Volver Atrás ↩️")
@@ -48,7 +43,7 @@ def ver_detalles():
             continue
         
         else:
-            if respuesta == 1:
+            if respuesta == 1: # Excepción (No hay misiones agendadas)
                 
                 if len(misiones_planificadas) < 1:
                     limpiar_terminal()
@@ -61,7 +56,7 @@ def ver_detalles():
                     limpiar_terminal()
                     continue
                 
-                else:
+                else: # Mostrar las misiones que se agendaron y los recursos que se usaron
                     sonido2.play()
                     limpiar_terminal()
                     print("============== INFO DE MISIONES ❇️  =============")
@@ -83,23 +78,23 @@ def ver_detalles():
                     continue
             
             
-            if respuesta == 2:
+            if respuesta == 2: # Mostrar la agenda de los recursos
                 sonido1.play()
                 limpiar_terminal()
                 while True:
                     try:
-                        print("=== INFO DE RECURSOS 📦 ===")
+                        print("============================================ INFO DE RECURSOS 📦 ============================================")
                         contador = 0
                         num = 0
                         for x in range(len(recursos_alianza)):
-                            print(f"{num}. {recursos_alianza[contador].nombre} | {recursos_alianza[contador].descripcion}")
+                            print(f"{num}. {Fore.YELLOW}{Style.BRIGHT}{recursos_alianza[contador].nombre_inventario}{Style.RESET_ALL} {recursos_alianza[contador].tipo_recurso} | {recursos_alianza[contador].descripcion}")
                             contador += 1
                             num += 1
-                        print("===========================")
+                        print("=============================================================================================================")
                         
                         print("\nSelecciona el índice del recurso para ver su agenda 📆")
                         print("[-1] Volver Atrás ↩️")
-                        indice = int(input("\n▶  "))
+                        indice = int(input("\n▶  ")) # El usuario selecciona un recurso
                     
                         if indice == -1:
                             limpiar_terminal()
@@ -122,7 +117,8 @@ def ver_detalles():
                         print("==================================================\n")
                         continue
                     
-                    else:
+                    else: # Mostramos la agenda del recurso seleccionado
+                        
                         agenda_recurso_seleccionado = recursos_alianza[indice].agenda
                         limpiar_terminal()
                         sonido1.play()

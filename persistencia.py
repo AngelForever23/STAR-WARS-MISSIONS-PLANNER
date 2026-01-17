@@ -1,19 +1,32 @@
 from listar_misiones import misiones_planificadas
-from Recursos_Alianza import recursos_alianza
-from Misiones_Alianza import misiones_alianza
-from Eliminar_Mision import papelera_reciclaje
+from recursos import recursos_alianza
+from misiones import misiones_alianza
+from eliminar_mision import papelera_reciclaje
 import json
 import os
 
 # Importamos cada misión (objeto) por separado
-from Misiones_Alianza import recognition_mission_tattol,rescue_princess_leia,battle_hoth,attack_death_star
+from misiones import reconocimiento_tattoine,rescate_pricesa_leia,ataque_estrella_muerte,batalla_hoth,rescate_ciudad_nube,rescate_palacio_jabba,ataque_segunda_estrella_muerte,mision_endor_terrestre,confrontacion_final
 
-# Variable constante para "mapear" las misiones (objetos) según sus Ids
+# OBTENER LA RUTA BASE DEL PROYECTO
+RUTA_BASE = os.path.dirname(os.path.abspath(__file__))
+RUTA_SAVED_DATA = os.path.join(RUTA_BASE, "Saved Data")
+
+# En caso de que no exista la carpeta Saved Data
+if not os.path.exists(RUTA_SAVED_DATA):
+    os.makedirs(RUTA_SAVED_DATA)
+
+# Variable constante para encontrar las misiones (objetos) según sus Ids
 TODAS_LAS_MISIONES = {
-    "M001": recognition_mission_tattol,
-    "M002": rescue_princess_leia,
-    "M003": battle_hoth,
-    "M004": attack_death_star
+    "M001": reconocimiento_tattoine,
+    "M002": rescate_pricesa_leia,
+    "M003": ataque_estrella_muerte,
+    "M004": batalla_hoth,
+    "M005": rescate_ciudad_nube,
+    "M006": rescate_palacio_jabba,
+    "M007": ataque_segunda_estrella_muerte,
+    "M008": mision_endor_terrestre,
+    "M009": confrontacion_final,
 }
 
 
@@ -40,43 +53,44 @@ def guardar_estado():
         papelera_diccionario.append(mision.diccionario()) # Las convertimmos en un diccionario y las añadimos a [papelera_diccionario]
     
     
-    # 1.1 Guardamos las agendas de los recursos como json
-    with open("agendas_recursos.json", "w", encoding="uft-8") as archivo:
+    # Guardar todos los archivos como json en la carpeta Save Data
+    with open(os.path.join(RUTA_SAVED_DATA,"agendas_recursos.json"), "w", encoding="utf-8") as archivo:
         json.dump(agendas_de_recursos, archivo, indent=4, ensure_ascii=False)
     
-    # 2.2 Guardamos las misiones agendadas como json
-    with open("misiones_agendadas.json", "w", encoding="uft-8") as archivo:
+    with open(os.path.join(RUTA_SAVED_DATA,"misiones_agendadas.json"), "w", encoding="utf-8") as archivo:
         json.dump(misiones_agendadas, archivo, indent=4, ensure_ascii=False)
     
-    # 3.3 Guardamos las misiones restantes de la alianza como json
-    with open("misiones_restantes.json", "w", encoding="uft-8") as archivo:
+    with open(os.path.join(RUTA_SAVED_DATA,"misiones_restantes.json"), "w", encoding="utf-8") as archivo:
         json.dump(misiones_restantes, archivo, indent=4, ensure_ascii=False)
     
-    # 4.4 Guardamos la papelera reutilizble de las misiones como json
-    with open("papelera.json", "w", encoding="uft-8") as archivo:
+    with open(os.path.join(RUTA_SAVED_DATA,"papelera.json"), "w", encoding="utf-8") as archivo:
         json.dump(papelera_diccionario, archivo, indent=4, ensure_ascii=False)
 
 
 def cargar_estado():
     
-        # Verificar si existen los archivos Json antes de cargarlos 
-    archivos = ["agendas_recursos.json","misiones_agendadas.json","misiones_restantes.json","papelera.json"]
+    # Verificar si existen los archivos Json antes de cargarlos 
+    archivos = [
+        os.path.join(RUTA_SAVED_DATA,"agendas_recursos.json"),
+        os.path.join(RUTA_SAVED_DATA,"misiones_agendadas.json"),
+        os.path.join(RUTA_SAVED_DATA,"misiones_restantes.json"),
+        os.path.join(RUTA_SAVED_DATA,"papelera.json")]
     
-    # Si algún archivo no existe entonces es la primera vez que se abre la aplicación
+    # Si algún archivo json no existe entonces es la primera vez que se abre la aplicación o el usuario los borró :)
     if not all(os.path.exists(archivo) for archivo in archivos):
         return False # No hay estado que cargar
     
     
     try:
         # 1. Cargar las agendas de los recursos
-        with open("agendas_recursos.json", "r") as archivo:
+        with open(os.path.join(RUTA_SAVED_DATA,"agendas_recursos.json"), "r", encoding="utf-8") as archivo:
             agendas_recursos_cargadas = json.load(archivo)
 
         for indice, agenda_recurso in enumerate(agendas_recursos_cargadas): # Separamos 
             recursos_alianza[indice].agenda = agenda_recurso["agenda"]
 
         # 2. Cargar las misiones agendadas
-        with open("misiones_agendadas.json", "r") as archivo:
+        with open(os.path.join(RUTA_SAVED_DATA,"misiones_agendadas.json"), "r", encoding="utf-8") as archivo:
             misiones_agendadas_cargadas = json.load(archivo)
             misiones_planificadas.clear() # Limpiamos las misiones planificadas (viejas)
             misiones_planificadas.extend(misiones_agendadas_cargadas) # Añadimos las misiones que agendamos (diccionarios) a [misiones_planificadas]
@@ -84,7 +98,7 @@ def cargar_estado():
         # 3. Cargar las misiones restantes
         misiones_alianza.clear() # Borramos todas las misiones de la alianza
 
-        with open("misiones_restantes.json", "r") as archivo:
+        with open(os.path.join(RUTA_SAVED_DATA,"misiones_restantes.json"), "r", encoding="utf-8") as archivo:
             mision_diccionario = json.load(archivo)
 
         for datos_mision in mision_diccionario: # Misión diccionario es la lista que contiene las misiones (dicionario) que nos quedan [{},{}]
@@ -93,7 +107,8 @@ def cargar_estado():
             misiones_alianza.append(mision_objeto)
 
         # 4. Cargar la papelera de reciclaje
-        with open("papelera.json", "r") as archivo:
+        papelera_reciclaje.clear()
+        with open(os.path.join(RUTA_SAVED_DATA,"papelera.json"), "r", encoding="utf-8") as archivo:
             papelera_diccionario = json.load(archivo) 
 
         for datos_mision in papelera_diccionario: # Papelera diccionario es la lista que contiene las misiones (dicionario) que fueron agendadas y eliminadas [{},{}]
@@ -104,7 +119,7 @@ def cargar_estado():
         return True
     
     except Exception as e:
-        print(f"Error al cargar el estado: {e}")
+        print(f"❌ Error al cargar el estado: \n▶ {e}")
         return False
 
 

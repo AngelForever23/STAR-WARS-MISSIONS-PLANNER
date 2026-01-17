@@ -1,12 +1,12 @@
 from listar_misiones import misiones_planificadas
-from Misiones_Alianza import misiones_alianza
-from Recursos_Alianza import recursos_alianza
+from misiones import misiones_alianza
+from recursos import recursos_alianza
 from musica_sonidos import sonido1
 from musica_sonidos import sonido2
 from musica_sonidos import sonido3
+from utilidades import limpiar_terminal
 
-# Importación de los colores para los textos
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Back, Style, init # Importar librería de colores para strings
 init(autoreset=True)
 
 papelera_reciclaje = []  # Aquí se añaden las misiones que vayamos eliminando
@@ -14,16 +14,12 @@ papelera_reciclaje = []  # Aquí se añaden las misiones que vayamos eliminando
 def obtener_misiones_eliminadas(misiones_eliminadas):
     papelera_reciclaje.append(misiones_eliminadas)
 
-# Importación de la limpieza de la terminal
+
 import os
-import time
-import sys
-def limpiar_terminal():
-    os.system('cls')
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de "Bienvenido a Pygame".
 
 def eliminar_mision():
-    if len(misiones_planificadas) == 0:
+    if len(misiones_planificadas) == 0: # Excepción (No hay misiones agendadas)
         print("===========================================")
         print("No hay misiones agendadas para eliminar ⚠️")
         print("===========================================")
@@ -32,8 +28,9 @@ def eliminar_mision():
         limpiar_terminal()
         return
     else:
-        while True: # El usuario selecciona la misión que desea eliminar
-            try:
+        while True:
+            
+            try: # Mostramos las misiones para eliminar
                 numero = 0
                 print("=============== ELIMINAR AGENDA 🗑️  ===============")
                 print("--------------------------------------------------")
@@ -44,7 +41,7 @@ def eliminar_mision():
                 
                 print("\nIntroduce el índice de la Misión para eliminarla.")
                 print("[-1] Volver Atrás ↩️")
-                indice = int(input("\n▶  "))
+                indice = int(input("\n▶  ")) # El usuario selecciona la misión que desea eliminar
                 
                 if indice == -1:
                     sonido2.play()
