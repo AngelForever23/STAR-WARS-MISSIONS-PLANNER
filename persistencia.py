@@ -1,7 +1,7 @@
 from listar_misiones import misiones_planificadas
 from recursos import recursos_alianza
 from misiones import misiones_alianza
-from eliminar_mision import papelera_reciclaje
+from eliminar_mision_agenda import papelera_reciclaje
 import json
 import os
 

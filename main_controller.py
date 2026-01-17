@@ -169,7 +169,7 @@ while True:
         elif opcion == 3: # Función de eliminar misión
             sonido1.play()
             limpiar_terminal()
-            from eliminar_mision import eliminar_mision
+            from eliminar_mision_agenda import eliminar_mision
             eliminar_mision()
             salir_confirmado = False
     

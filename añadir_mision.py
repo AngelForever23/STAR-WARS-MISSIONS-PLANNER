@@ -1,6 +1,6 @@
 from recursos import recursos_alianza
 from misiones import misiones_alianza
-from restricciones import validar_co_requisitos,validar_exclusiones
+from restricciones_star_wars import validar_co_requisitos,validar_exclusiones
 from collections import Counter
 from utilidades import limpiar_terminal
 from utilidades import mostrar_cargando_y_limpiar
@@ -369,7 +369,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
         from listar_misiones import agregar_mision_para_agendar
         agregar_mision_para_agendar(mision,misiones_alianza[numero].nombre,dia,recursos_seleccionados_sin_duplicados)
         misiones_eliminadas = misiones_alianza[numero]
-        from eliminar_mision import obtener_misiones_eliminadas
+        from eliminar_mision_agenda import obtener_misiones_eliminadas
         obtener_misiones_eliminadas(misiones_eliminadas)
         misiones_alianza.pop(numero) # Borramos la misión de las misiones de la alianza
         
