@@ -115,13 +115,13 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             print(f"{Style.BRIGHT}{misiones_alianza[numero].descripcion}{Style.RESET_ALL}")
             
             print(f"\n{Style.BRIGHT}< INSTRUCCIONES >{Style.RESET_ALL}")
-            print(f"1. Escoge el recurso deseado para la misión seleccionando un número en el rango del (0 - {len(recursos_alianza) - 1}).") 
-            print(">>> EJEMPLO: 1 [Princesa Leia]")
-            print("2. Para asignar varios recursos, cada número debe estar separado por comas (,)")
-            print(">>> EJEMPLO: 0,5,6,10. [Luke, R2-D2, C-3PO, Sable de Luz]")
-            print("3. Para asignar varias unidades del mismo recurso solo repite el número al seleccionarlo.")
-            print("[Asegúrate de no seleccionar una cantidad superior a la cantidad disponible de unidades]")
-            print(">>> EJEMPLO: 8,8,12,12 [X-Wing (2), Traje de Piloto (2)")
+            print(f"1. Escoge el recurso deseado seleccionando un número en el rango del (0 - {len(recursos_alianza) - 1}).") 
+            print(">>> EJEMPLO: 1")
+            print("2. Para asignar varios recursos, cada número debe estar separado por comas (,).")
+            print(">>> EJEMPLO: 0,5,6,10")
+            print("3. Para asignar varias unidades del mismo recurso, repite el número.")
+            print("(Asegúrate de no seleccionar una cantidad superior a la cantidad disponible.)")
+            print(">>> EJEMPLO: 8,8,12,12")
             
             print("\nSelecciona tus recursos.")
             seleccion = [int(i) for i in input("▶  ").split(",")] # Selección de los recursos en forma de lista

@@ -6,15 +6,13 @@ restricciones = {
     "co_requisitos" : {
     "A000":"A011", # Luke Skywalker ↔️ Sable de luz [LUKE NECESITA SU SABLE PARA PELEAR]
     "A011":"A000",
-    "A003":"A012", # Han ↔️ Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
-    "A012":"A003",
-    "A003":"A008",  # Han Solo ➡️ Hálcón Milenario [TANTO HAN SOLO COMO LANDO MANEJAN EL HALCÓN MILENARIO]
+    "A003":"A012", # Han ➡️ Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
     "A005":"A008", # Lando ➡️ Halcón Milenario [TANTO LANDO COMO HAN SOLO MANEJAN EL HALCÓN MILENARIO]
     "A006":"A007", # R2D2 ↔️ C-3PO [SIEMPRE ANDAN JUNTOS]
     "A007":"A006",
     "A009":"A013", # X-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
     "A010":"A013", # A-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
-    "A016": "A003",  # Equipo de Camuflaje ➡️ Han Solo [Lo usa en Endor]
+    "A016": "A003",  # Equipo de Camuflaje ➡️ [Han Solo lo usa en Endor]
     },
     
     # Exclusiones : (recurso1,recurso2)

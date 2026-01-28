@@ -35,7 +35,7 @@ if estado_cargado == False:
     mostrar_cargando_y_limpiar("Iniciando una nueva partida")
     limpiar_terminal()
     sonido0.play()
-    nombre_estudio = pyfiglet.figlet_format("AF STUDIO") #
+    nombre_estudio = pyfiglet.figlet_format("AF STUDIO")
     print(nombre_estudio)
     presentacion = pyfiglet.figlet_format(f"  Presenta")
     print(presentacion)
