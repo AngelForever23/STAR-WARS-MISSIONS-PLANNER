@@ -123,6 +123,8 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             print("(Asegúrate de no seleccionar una cantidad superior a la cantidad disponible.)")
             print(">>> EJEMPLO: 8,8,12,12")
             
+            print("\n[-1] Cancelar y volver al menú principal ↩️")
+            
             print("\nSelecciona tus recursos.")
             seleccion = [int(i) for i in input("▶  ").split(",")] # Selección de los recursos en forma de lista
         
@@ -134,6 +136,17 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             print("=========================================\n")
             continue
             
+        
+        if len(seleccion) == 1:
+            for x in seleccion:
+                if x == -1:
+                    mision = None
+                    sonido2.play()
+                    limpiar_terminal()
+                    pygame.mixer.music.load(light_side_menu)
+                    pygame.mixer.music.play(-1)
+                    return
+        
         error_recurso_fuera_de_rango = None
         for x in seleccion:
             if x < 0 or x > (len(recursos_alianza) - 1):
@@ -146,7 +159,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             print(f"⚠️  Error. Selecciona los números entre (0 - {len(recursos_alianza) - 1}) para continuar.")
             print("==============================================================\n")
             continue
-            
+        
         if (len(seleccion)) > 12:
             limpiar_terminal()
             sonido3.play()
