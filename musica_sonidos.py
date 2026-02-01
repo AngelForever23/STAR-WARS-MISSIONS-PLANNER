@@ -23,7 +23,7 @@ buttonproceed = os.path.join(RUTA_AUDIO, "Sounds", "Buttonproceed.mp3")
 buttonback = os.path.join(RUTA_AUDIO, "Sounds", "Buttonback.mp3")
 door = os.path.join(RUTA_AUDIO, "Sounds", "Door.mp3")
 exit_sound = os.path.join(RUTA_AUDIO, "Sounds", "Exit.mp3")
-welcome_sound = os.path.join(RUTA_AUDIO, "Sounds", "Welcome.wav")
+welcome_sound = os.path.join(RUTA_AUDIO, "Sounds", "Welcome.mp3")
 
 # Cargar sonidos
 sonido0 = pygame.mixer.Sound(welcome_sound)

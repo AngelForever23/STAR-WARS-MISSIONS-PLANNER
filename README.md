@@ -19,7 +19,7 @@ pip install -r requirements.txt
 **Misiones** ❇️✳️: Cada misión tiene diferentes requisitos (Los puedes ver en "misiones.py"):
 - Recursos necesarios (Los requisitos mínimos para agendar cada misión)
 - Recursos prohibidos (Los recursos que no están permitidos en la misión, por el CONTEXTO DE STAR WARS)
-Deberás encargarte de asignar los recursos que requiere la misión (puedes añadir algunos adicionales) y asegurarte de que no haigan recursos que no están permitidos. 
+Deberás encargarte de asignar los recursos que requiere la misión (puedes añadir algunos adicionales) y asegurarte de que no hayan recursos que no están permitidos. 
 Cada misión cuenta con una <descripción> que te da una PISTA 💡 de cúales son los recursos requeridos y sobre que trata 🤔
 
 **Recursos** 📦: 
