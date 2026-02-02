@@ -12,7 +12,7 @@ restricciones = {
     "A007":"A006",
     "A009":"A013", # X-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
     "A010":"A013", # A-Wing ➡️ Traje de Piloto [TODA NAVE NECESITA EL EQUIPO CORRECTO PARA PILOTARLA]
-    "A016": "A003",  # Equipo de Camuflaje ➡️ [Han Solo lo usa en Endor]
+    "A016": "A002",  # Equipo de Camuflaje ➡️ Leia [Leia (Líder en esta misión) usa el traje en Endor]
     },
     
     # Exclusiones : (recurso1,recurso2)
