@@ -29,7 +29,7 @@ pygame.mixer.music.stop()
 limpiar_terminal()
 
 def añadir_nueva_mision(): # Sección para seleccionar una Misión
-    
+    pygame.mixer.music.set_volume(0.3)
     while True:
         if len(misiones_alianza) == 0: # Excepción (Ya se asignaron todas las misiones)
             time.sleep(0.5)
@@ -116,12 +116,12 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             
             print(f"\n{Style.BRIGHT}< INSTRUCCIONES >{Style.RESET_ALL}")
             print(f"1. Escoge el recurso deseado seleccionando un número en el rango del (0 - {len(recursos_alianza) - 1}).") 
-            print(">>> EJEMPLO: 1")
             print("2. Para asignar varios recursos, cada número debe estar separado por comas (,).")
             print(">>> EJEMPLO: 0,5,6,10")
-            print("3. Para asignar varias unidades del mismo recurso, repite el número.")
-            print("(Asegúrate de no seleccionar una cantidad superior a la cantidad disponible.)")
-            print(">>> EJEMPLO: 8,8,12,12")
+            # Esto se comentó debido a que las cantidades de recursos fueron simplificadas a 1 para eliminar incoherencias
+            # print("3. Para asignar varias unidades del mismo recurso, repite el número.")
+            # print("(Asegúrate de no seleccionar una cantidad superior a la cantidad disponible.)")
+            # print(">>> EJEMPLO: 8,8,12,12")
             
             print("\n[-1] Cancelar y volver al menú principal ↩️")
             
@@ -336,7 +336,6 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
     # Sección para verificar si un recurso está o no en dos misiones a la vez en el mismo día
     def validar_horario_recursos_seleccionados():
         limpiar_terminal()
-        pygame.mixer.music.set_volume(0.25) # 25% del Volumen de la Música de fondo para no saturar los sonidos de los recursos
         contador_seleccion = Counter(recursos_seleccionados_sin_duplicados)
         
         # Verificar conflictos y agendar
@@ -363,7 +362,6 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
                         print(f"Unidades restantes para el {dia}: [{recurso.cantidad - cantidad_necesaria}].\n")
                         time.sleep(3.7)
         
-        pygame.mixer.music.set_volume(1.0) # 100% del Volumen de la música de fondo
         return True # Si llegamos hasta aquí, los recursos seleccionados pueden hacer la misión el día seleccionado
 
     # Si todo salió bien, elimnamos la misión que seleccionamos de las misiones disponibles.
@@ -372,11 +370,13 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
     
     if resultado == True:
         mostrar_cargando_y_limpiar("Agendando la misión")
-        pygame.mixer.music.stop
+        pygame.mixer.music.stop()
+        pygame.mixer.music.set_volume(1)
         pygame.mixer.music.load(mision_exito_alianza)
         pygame.mixer.music.play()
         print(f"\n{Fore.YELLOW}{Style.BRIGHT}LA MISIÓN HA SIDO AGENDADA EXITOSAMENTE 🎉{Style.RESET_ALL}.")
         time.sleep(5)
+        pygame.mixer.music.set_volume(0.3)
         
         # Agendamos la misión y la eliminamos de misiones de la alianza
         from listar_misiones import agregar_mision_para_agendar

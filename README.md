@@ -122,9 +122,6 @@ El sistema guarda automáticamente:
 ### Búsqueda Automática de Horarios
 Presiona [7] al seleccionar el día para que el sistema encuentre automáticamente el primer hueco disponible en el calendario semanal.
 
-### Gestión de Cantidades
-Recursos como X-Wings (5 unidades) pueden asignarse a múltiples misiones simultáneas siempre que no excedan la cantidad disponible.
-
 ### Validación Inteligente
 El sistema verifica:
 1. Que no haya conflictos de recursos en el mismo día
@@ -153,6 +150,7 @@ Asegúrate de que la carpeta Audio/ esté en la misma ubicación que main_contro
 ## Próximas Actualizaciones 🔮
 
 - [☸️] Implementación del Imperio Galáctico como segundo bando jugable
+- [👥] Añadir cantidades de recursos (pools) y manejo de excepciones
 - [🏆] Sistema de logros y estadísticas
 - [🎨] Interfaz gráfica (GUI) con Pygame
 - [▶️] Reproducción de clips de las películas al completar misiones

@@ -34,7 +34,6 @@ if estado_cargado == False:
     print(f"\n{Back.LIGHTBLUE_EX}{Style.BRIGHT}BIENVENIDO/A.{Style.RESET_ALL}")
     mostrar_cargando_y_limpiar("Iniciando una nueva partida")
     limpiar_terminal()
-    pygame.mixer.Sound(sonido0).set_volume(1)
     sonido0.play()
     nombre_estudio = pyfiglet.figlet_format("AF STUDIO")
     print(nombre_estudio)
@@ -46,7 +45,6 @@ elif estado_cargado == True:
     print(f"\n{Fore.GREEN}{Style.BRIGHT}Datos cargados exitosamente ✅ {Style.RESET_ALL}")
     mostrar_cargando_y_limpiar("Cargando partida guardada")
     limpiar_terminal()
-    pygame.mixer.Sound(sonido0).set_volume(1)
     sonido0.play()
     nombre_estudio = pyfiglet.figlet_format("AF STUDIO")
     print(nombre_estudio)
@@ -61,6 +59,7 @@ Imperio = False
 
 # Comienza la música a sonar
 pygame.mixer.music.load(star_wars_intro)
+pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
 
 # Pantalla de inicio 2 (Elegir un bando). El Imperio estará disponible en próximas actualizaciones
@@ -75,6 +74,7 @@ while True:
         if opcion == 1:
             sonido1.play()
             pygame.mixer.music.load(light_side)
+            pygame.mixer.music.set_volume(0.3)
             pygame.mixer.music.play()
             limpiar_terminal() #Limpiamos la terminal
             print("==================================")
@@ -95,6 +95,7 @@ while True:
             
             # Esto es para cuando se habilite el Imperio (IGNORAR)
             # pygame.mixer.music.load(dark_side)
+            # pygame.mixer.music.set_volume(0.3)
             # pygame.mixer.music.play()
             # limpiar_terminal()
             # print("=================================")

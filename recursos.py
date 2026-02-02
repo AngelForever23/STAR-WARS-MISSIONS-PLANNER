@@ -65,28 +65,28 @@ c_3po = Recurso("A007", "C-3PO 🤖", "C-3PO             🤖", " (Droide)  ", "
 halcon_milenario = Recurso("A008", "Halcón Milenario 🛸", "Halcón Milenario  🛸", "  (Nave)   ", "Alianza", 1, resourse_sounds[8],
                 "Carguero ligero YT-1300 modificado por Han Solo y Chewbacca.")
 
-x_wing = Recurso("A009", "X-Wing ✈️ ", "X-Wing            ✈️", "   (Nave)   ", "Alianza", 5, resourse_sounds[9],
+x_wing = Recurso("A009", "X-Wing ✈️ ", "X-Wing            ✈️", "   (Nave)   ", "Alianza", 1, resourse_sounds[9],
                 "Nave tipo caza estelar de la Alianza Rebelde.")
 
-a_wing = Recurso("A010", "A-Wing 🛩️", "A-Wing           🛩️", "   (Nave)   "   , "Alianza", 3, resourse_sounds[10],
+a_wing = Recurso("A010", "A-Wing 🛩️", "A-Wing           🛩️", "   (Nave)   "   , "Alianza", 1, resourse_sounds[10],
                 "Interceptor rebelde, el caza más rápido de la galaxia.")
 
 lightsaber = Recurso("A011", "Sable de Luz ⚔️ ", "Sable de Luz     ⚔️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[11],
                     "Espada de energía, elegante y poderosa. Usada por los Jedi y Sith.")
 
-blaster = Recurso("A012", "Bláster 🔫", "Bláster          🔫", " (Equipo)  ", "Alianza", 5, resourse_sounds[12],
+blaster = Recurso("A012", "Bláster 🔫", "Bláster          🔫", " (Equipo)  ", "Alianza", 1, resourse_sounds[12],
                 "Armas de energía que disparan rayos de plasma comprimido")
 
-traje_piloto = Recurso("A013", "Traje de Piloto 🧥", "Traje de Piloto  🧥", " (Equipo)  ", "Alianza", 5, resourse_sounds[13],
+traje_piloto = Recurso("A013", "Traje de Piloto 🧥", "Traje de Piloto  🧥", " (Equipo)  ", "Alianza", 1, resourse_sounds[13],
                         "Monos de vuelo ajustados, funcionales y con equipo integrado.")
 
-escudo_deflector = Recurso("A014", "Escudo Deflector 🛡️", "Escudo Deflector 🛡️ ", " (Equipo)  ", "Alianza", 3, resourse_sounds[14],
+escudo_deflector = Recurso("A014", "Escudo Deflector 🛡️", "Escudo Deflector 🛡️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[14],
                             "Dispositivo de protección personal contra disparos láser.")
 
-detonadores_termicos = Recurso("A015", "Detonadores Térmicos 💣", "Detonadores      💣", " (Equipo)  ", "Alianza", 4, resourse_sounds[15],
+detonadores_termicos = Recurso("A015", "Detonadores Térmicos 💣", "Detonadores      💣", " (Equipo)  ", "Alianza", 1, resourse_sounds[15],
                                 "Explosivos compactos de gran potencia destructiva usados por Leia.")
 
-equipo_camuflaje = Recurso("A016", "Equipo de Camuflaje 🌿", "Equipo Camuflaje 🌿", " (Equipo)  ", "Alianza", 5, resourse_sounds[16],
+equipo_camuflaje = Recurso("A016", "Equipo de Camuflaje 🌿", "Equipo Camuflaje 🌿", " (Equipo)  ", "Alianza", 1, resourse_sounds[16],
                             "Vestimenta para misiones encubiertas en entornos forestales.")
 
 
