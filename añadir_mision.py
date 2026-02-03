@@ -5,6 +5,7 @@ from collections import Counter
 from utilidades import limpiar_terminal
 from utilidades import mostrar_cargando_y_limpiar
 import time
+from time import sleep
 
 from colorama import Fore, Back, Style, init # Importar librería de colores para strings
 init(autoreset=True)
@@ -53,7 +54,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
             numero = 0
             print("---------------------------------------------------------")
             for x in range(len(misiones_alianza)): # Mostramos las misiones que tenemos disponible ahora
-                print(f"{numero}. {Style.BRIGHT}{misiones_alianza[contador].nombre}{Style.RESET_ALL} | ID: [{misiones_alianza[contador].id}]")
+                print(f"[{numero}] {Style.BRIGHT}{misiones_alianza[contador].nombre}{Style.RESET_ALL} | ID: [{misiones_alianza[contador].id}]")
                 contador += 1
                 numero += 1
                 print("---------------------------------------------------------")
@@ -94,6 +95,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
 
     mision = misiones_alianza[numero].id # AQUÍ SE GUARDA EL ID DE LA MISIÓN <<<
 
+    print("\n")
     mostrar_cargando_y_limpiar("Planificando la Misión") # Sección de Cargando...
 
     # Sección para seleccionar los recursos
@@ -101,14 +103,14 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
         error = False
         try:
             # Ver el inventario completo de la alianza
-            print("============= RECURSOS DISPONIBLES PARA LA MISIÓN 📦 ============")
+            print("============= RECURSOS DISPONIBLES PARA LA MISIÓN 📦 =============")
             contador = 0
             num = 0
             for x in range(len(recursos_alianza)):
-                print(f"{num}. {Fore.YELLOW}{Style.BRIGHT}{recursos_alianza[contador].nombre_inventario}{Style.RESET_ALL} {recursos_alianza[contador].tipo_recurso} | ID: [{recursos_alianza[contador].id}] | Unidad/es: [{recursos_alianza[contador].cantidad}]")
+                print(f"[{num}] {Fore.YELLOW}{Style.BRIGHT}{recursos_alianza[contador].nombre_inventario}{Style.RESET_ALL} {recursos_alianza[contador].tipo_recurso} | ID: [{recursos_alianza[contador].id}] | Unidad/es: [{recursos_alianza[contador].cantidad}]")
                 contador += 1
                 num += 1
-            print("=================================================================")
+            print("==================================================================")
             
             print(f"\n{Style.BRIGHT}{misiones_alianza[numero].nombre}{Style.RESET_ALL}")
             print(f"{Style.BRIGHT}< DESCRIPCIÓN >{Style.RESET_ALL}")
@@ -248,6 +250,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
                 break
 
 
+    print("\n")
     mostrar_cargando_y_limpiar("Añadiendo los recursos a la misión")
 
 
@@ -344,6 +347,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
                 if recurso.id == recurso_seleccion_id: # ¿El ID del recurso está en la selección?
                     veces_ocupado = len(recurso.agenda[dia]) # Contar cuantas veces está ocupado ese día
                     if veces_ocupado + cantidad_necesaria > recurso.cantidad: # Si los recursos seleccionados están disponibles ese dia...
+                        sleep(1)
                         sonido3.play()
                         print("========================================================")
                         print(f"⚠️  CONFLICTO: {recurso.nombre}")
@@ -369,6 +373,7 @@ def añadir_nueva_mision(): # Sección para seleccionar una Misión
     resultado = validar_horario_recursos_seleccionados()
     
     if resultado == True:
+        print("\n")
         mostrar_cargando_y_limpiar("Agendando la misión")
         pygame.mixer.music.stop()
         pygame.mixer.music.set_volume(1)

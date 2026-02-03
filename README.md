@@ -61,7 +61,10 @@ Ej: Detonadores Térmicos y Escudo Deflector (Riesgo de explosión propia)
 git clone https://github.com/AngelForever23/STAR-WARS-MISSIONS-PLANNER.git
 cd STAR-WARS-MISSIONS-PLANNER
 2. Instalar dependencias:
-pip install -r requirements.txt
+Opción 1 (Manual):
+    pip install -r requirements.txt
+Opción 2 (Automática):
+    intall_libraries.py
 ### Ejecutar el Programa
 python main_controller.py
 
@@ -100,6 +103,7 @@ STAR-WARS-MISSIONS-PLANNER/
 ├── musica_sonidos.py           # Gestión de audio
 ├── utilidades.py               # Funciones auxiliares
 ├── requirements.txt            # Dependencias del proyecto
+├── install_libraries.py        # Módulo para instalar las librerías necesarias automáticamente
 └── README.md                   # Este archivo
 
 ## 🎵 Características Multimedia
@@ -108,6 +112,7 @@ STAR-WARS-MISSIONS-PLANNER/
 - Efectos de sonido para cada interacción
 - Frases de personajes cuando se asignan a misiones
 - Arte ASCII en pantallas de bienvenida
+- Animaciones sencillas en pantallas de carga
 
 ## 💾 Persistencia de Datos
 
@@ -152,7 +157,7 @@ Asegúrate de que la carpeta Audio/ esté en la misma ubicación que main_contro
 - [☸️] Implementación del Imperio Galáctico como segundo bando jugable
 - [👥] Añadir cantidades de recursos (pools) y manejo de excepciones
 - [🏆] Sistema de logros y estadísticas
-- [🎨] Interfaz gráfica (GUI) con Pygame
+- [🎨] Interfaz gráfica (GUI) con Streamlit
 - [▶️] Reproducción de clips de las películas al completar misiones
 
 ## EXTRA ✨
