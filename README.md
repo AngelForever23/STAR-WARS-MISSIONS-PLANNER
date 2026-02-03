@@ -104,7 +104,7 @@ STAR-WARS-MISSIONS-PLANNER/
 ├── install_libraries.py        # Módulo para instalar las librerías necesarias automáticamente
 └── README.md                   # Este archivo
 
-## 🎵 Características Multimedia
+## Características Multimedia 🎵
 
 - Música de fondo temática según el bando
 - Efectos de sonido para cada interacción
@@ -112,7 +112,7 @@ STAR-WARS-MISSIONS-PLANNER/
 - Arte ASCII en pantallas de bienvenida
 - Animaciones sencillas en pantallas de carga
 
-## 💾 Persistencia de Datos
+## Persistencia de Datos 💾
 
 El sistema guarda automáticamente:
 - Agendas de todos los recursos
