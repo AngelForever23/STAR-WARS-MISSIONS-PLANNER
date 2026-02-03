@@ -8,10 +8,9 @@ Este proyecto fue desarrollado como parte del curso de Programación de MATCOM, 
 
 ## Características Principales 🎯
 
-- Planificación de 9 misiones icónicas de la trilogía original (Episodios IV, V, VI)
+- Planificación de 9 misiones icónicas
 - 17 recursos únicos con propiedades específicas (personajes, naves, droides, equipo)
-- Sistema de restricciones avanzado (co-requisitos y exclusiones)
-- Gestión de inventario con cantidades (pools de recursos)
+- Sistema de restricciones (co-requisitos y exclusiones)
 - Búsqueda automática de horarios ("Buscar Hueco")
 - Persistencia de datos en formato JSON
 - Interfaz de consola inmersiva con música y efectos de sonido
@@ -20,15 +19,14 @@ Este proyecto fue desarrollado como parte del curso de Programación de MATCOM, 
 ## DOMINIO ESCOGIDO: STAR WARS 🌌
 
 1. Rica en restricciones naturales: Los personajes tienen relaciones complejas (Han Solo y Lando son rivales, R2-D2 y C-3PO siempre van juntos, etc.)
-2. Recursos limitados y únicos: El Halcón Milenario, los sabables de luz, pilotos especializados
-3. Misiones icónicas bien definidas: Rescate de la Princesa Leia, Batalla de Hoth, Destrucción de la Estrella de la Muerte
-4. Alto potencial de inmersión: Permite usar música, sonidos y elementos visuales del universo
-
-Basado en la trilogía original de las Películas de la SAGA (Episodio IV, V y VI).
+2. Recursos limitados y únicos: (En un futuro serán por cantidad)
+3. Misiones icónicas bien definidas: Rescate de la Princesa Leia, Batalla de Hoth, Destrucción de la Estrella de la Muerte.
+4. Alto potencial de inmersión: Permite usar música, sonidos y elementos visuales del universo.
+5. Basado en la trilogía original de las Películas de la SAGA (Episodio IV, V y VI).
 
 ## Sobre las MISIONES , RECURSOS y RESTRICCIONES 👀
 
-1. **Misiones** ❇️: Cada misión tiene diferentes requisitos (Los puedes ver en "misiones.py"):
+1. **Misiones** ❇️: Cada misión tiene diferentes requisitos (Los puedes ver en el código de "misiones.py"):
 - Recursos necesarios (Los requisitos mínimos para agendar cada misión)
 - Recursos prohibidos (Los recursos que no están permitidos en la misión, por el CONTEXTO DE STAR WARS)
 Deberás encargarte de asignar los recursos que requiere la misión (puedes añadir algunos adicionales) y asegurarte de que no hayan recursos que no están permitidos. 
@@ -36,8 +34,8 @@ Cada misión cuenta con una <descripción> que te da una PISTA 💡 de cúales s
 
 2. **Recursos** 📦: 
 Entidades u objetos que pueden ser asignados a cada misión, los recursos se asignan con un "input" en forma de lista de índices. Ej: [1,2,3,4]
-Cada índice indica un recurso que se muestran en un inventario. Los recursos poseen cantidades, para añadir una cantidad de un recurso solo debes solicitarlo (repetirlo) una cantidad de veces que no sea superior a la disponible. Ej: [0,11,3,9,9,13,13].
-- Cada recurso posee una serie de propiedades: ID, Nombre, Tipo, Bando, Cantidad, Sonido o Frase. (Visibles al agendar una misión en "añadir_mision.py")
+Cada índice indica un recurso que se muestran en un inventario.
+- Cada recurso posee una serie de propiedades: ID, Nombre, Tipo, Bando, Cantidad, Sonido o Frase. (Visibles en el inventario en la función de agendar una misión en "añadir_mision.py")
 - Puedes ver detalles sobre los recursos en la función **Ver Detalles** del menú principal (Su descripción y agenda de disponibilidad)
 
 3. **Restricciones** ❌:
