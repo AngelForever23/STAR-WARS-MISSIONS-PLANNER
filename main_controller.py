@@ -83,7 +83,7 @@ while True:
             for msg in mensaje_intro:
                 print(f"\r{Fore.WHITE}{Style.BRIGHT}{msg}{Style.RESET_ALL}", end="", flush=True)
                 time.sleep(1.5)
-            time.sleep(1.25)
+            time.sleep(1)
             
             print("\n")
             print(f"\n       Selecciona el Bando al que quieres pertenecer: ")
@@ -112,6 +112,7 @@ while True:
                 input("\nPresione Enter para volver atrás ↩️  ")
                 sonido2.play()
                 limpiar_terminal()
+                primera_vez = False
                 continue
             
         else: # Si metiste la pata solamente te muestra un mensaje de error
