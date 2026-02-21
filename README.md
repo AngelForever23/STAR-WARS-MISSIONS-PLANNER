@@ -81,12 +81,18 @@ python main_controller.py
 
 STAR-WARS-MISSIONS-PLANNER/
 │
-├── Audio/                      # Música y efectos de sonido
+├── Audio/                                    # Música y efectos de sonido
 │   ├── Background Music/
 │   ├── Resource Sounds/
 │   └── Sounds/
 │
-├── Saved Data/                 # Archivos JSON de guardado (generados automáticamente)
+├── Functions/                                # Funciones del menú principal de la app
+│   ├── añadir_mision.py                      # Módulo para agendar misiones
+│   ├── detalles.py                           # Módulo para ver detalles de recursos/misiones
+│   ├── eliminar_mision_agenda.py             # Módulo para eliminar misiones
+│   └── listar_misiones.py                    # Módulo para mostrar misiones agendadas
+│
+├── Saved Data/                               # Archivos JSON de guardado (generados automáticamente)
 │   ├── agendas_recursos_alianza.json
 │   ├── misiones_agendadas_alianza.json
 │   ├── misiones_restantes_alianza.json
@@ -96,22 +102,23 @@ STAR-WARS-MISSIONS-PLANNER/
 │   ├── misiones_restantes_imperio.json
 │   └── papelera_imperio.json
 │
-├── cover art.png               # Imagen de portada del protecto
-├── main_controller.py          # Punto de entrada principal
-├── recursos.py                 # Definición de recursos (Clase Recurso)
-├── misiones.py                 # Definición de misiones (Clase Evento)
-├── restricciones.py            # Lógica de validación de restricciones
-├── añadir_mision.py            # Módulo para agendar misiones
-├── eliminar_mision.py          # Módulo para eliminar misiones
-├── listar_misiones.py          # Módulo para mostrar misiones agendadas
-├── detalles.py                 # Módulo para ver detalles de recursos/misiones
-├── bando.py                    # Módulo encargado del bando que está activo
-├── persistencia.py             # Sistema de guardado/carga en JSON
-├── musica_sonidos.py           # Gestión de audio
-├── utilidades.py               # Funciones auxiliares
-├── requirements.txt            # Dependencias del proyecto
-├── install_libraries.py        # Módulo para instalar las librerías necesarias automáticamente
-└── README.md                   # Este archivo
+├── Models/                                   # Modelo designador de las misiones, recursos y restricciones
+│   ├── misiones.py                           # Definición de misiones (Clase Evento)
+│   ├── recursos.py                           # Definición de recursos (Clase Recurso)
+│   └── restricciones_star_wars.py            # Lógica de validación de restricciones
+│
+├── Modules/                                  # Funciones del menú principal de la app
+│   ├── bando.py                              # Módulo encargado del bando activo
+│   ├── musica_sonidos.py                     # Gestión de audio
+│   ├── persistencia.py                       # Sistema de guardado/carga en JSON
+│   └── utilidades.py                         # Funciones auxiliares
+│
+├── cover art.png                             # Imagen de portada del protecto
+├── datos_de_ejemplo.txt                      # Archivo de guía para agendar misiones
+├── install_libraries.py                      # Módulo para instalar las librerías necesarias automáticamente
+├── main_controller.py                        # Punto de entrada principal  
+├── README.md                                 # Este archivo   
+└── requirements.txt                          # Dependencias del proyecto
 
 ## 🎵 Características Multimedia
 
