@@ -35,7 +35,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" # Esto esconde el mensaje de b
 # Importamos pygame (Para reproducir música) 
 import pygame
 pygame.mixer.init()
-from musica_sonidos import resourse_sounds
+from Modules.musica_sonidos import resourse_sounds
 
 # Recursos de la Alianza
 luke_skywalker = Recurso("A000", "Luke Skywalker 👤", "Luke Skywalker    👤",  "(Personaje)", "Alianza", 1, resourse_sounds[0],
@@ -68,7 +68,7 @@ halcon_milenario = Recurso("A008", "Halcón Milenario 🛸", "Halcón Milenario 
 x_wing = Recurso("A009", "X-Wing ✈️ ", "X-Wing            ✈️", "   (Nave)   ", "Alianza", 1, resourse_sounds[9],
                 "Nave tipo caza estelar de la Alianza Rebelde.")
 
-a_wing = Recurso("A010", "A-Wing 🛩️", "A-Wing           🛩️", "   (Nave)   "   , "Alianza", 1, resourse_sounds[10],
+a_wing = Recurso("A010", "A-Wing 🛩️ ", "A-Wing           🛩️", "   (Nave)   "   , "Alianza", 1, resourse_sounds[10],
                 "Interceptor rebelde, el caza más rápido de la galaxia.")
 
 lightsaber = Recurso("A011", "Sable de Luz ⚔️ ", "Sable de Luz     ⚔️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[11],
@@ -80,7 +80,7 @@ blaster = Recurso("A012", "Bláster 🔫", "Bláster          🔫", " (Equipo) 
 traje_piloto = Recurso("A013", "Traje de Piloto 🧥", "Traje de Piloto  🧥", " (Equipo)  ", "Alianza", 1, resourse_sounds[13],
                         "Monos de vuelo ajustados, funcionales y con equipo integrado.")
 
-escudo_deflector = Recurso("A014", "Escudo Deflector 🛡️", "Escudo Deflector 🛡️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[14],
+escudo_deflector = Recurso("A014", "Escudo Deflector 🛡️ ", "Escudo Deflector 🛡️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[14],
                             "Dispositivo de protección personal contra disparos láser.")
 
 detonadores_termicos = Recurso("A015", "Detonadores Térmicos 💣", "Detonadores      💣", " (Equipo)  ", "Alianza", 1, resourse_sounds[15],
@@ -111,3 +111,75 @@ recursos_alianza = [
     detonadores_termicos,
     equipo_camuflaje,
     ]
+
+#============================================================================================================================================#
+
+#Recursos del Imperio
+darth_vader = Recurso("I000", "Darth Vader 🎭", "Darth Vader     🎭", "(Personaje)", "Imperio", 1, resourse_sounds[17],
+                        "Lord Sith, mano derecha del Emperador y antiguo Jedi.")
+
+grand_moff_tarkin = Recurso("I001", "Grand Moff Tarkin 👤", "Grand M. Tarkin 👤", "(Personaje)", "Imperio", 1, resourse_sounds[18],
+                            "Comandante de la Estrella de la Muerte, despiadado estratega.")
+
+emperador_palpatine = Recurso("I002", "Emperador Palpatine 👤", "Emperador       👤", "(Personaje)", "Imperio", 1, resourse_sounds[19],
+                                "Líder Supremo del Imperio, maestro Sith.")
+
+almirante_piett = Recurso("I003", "Almirante Piett 👤", "Almirante Piett 👤", "(Personaje)", "Imperio", 1, resourse_sounds[20],
+                            "Oficial leal al mando de la flota imperial.")
+
+boba_fett = Recurso("I004", "Boba Fett 🎯", "Boba Fett       🎯", "(Personaje)", "Imperio", 1, resourse_sounds[21],
+                    "Cazarrecompensas más temido de la galaxia.")
+
+stormtrooper = Recurso("I005", "Stormtrooper 🪖 ", "Stormtrooper    🪖 ", " (Soldado) ", "Imperio", 1, resourse_sounds[22],
+                        "Soldado de élite del Imperio, leal hasta la muerte.")
+
+oficial_imperial = Recurso("I006", "Oficial Imperial 🎖️ ", "Oficial Imp.    🎖️ ", "(Personaje)", "Imperio", 1, resourse_sounds[23],
+                            "Oficiales que coordinan las operaciones del Imperio.")
+
+at_at_pilot = Recurso("I007", "Piloto AT-AT 🪖 ", "Piloto AT-AT    🪖 ", " (Piloto)  ", "Imperio", 1, resourse_sounds[24],
+                        "Piloto especializado en vehículos de asalto terrestres.")
+
+estrella_muerte = Recurso("I008", "Estrella de la Muerte 🌑", "Estrella Muerte 🌑", "(Estación) ", "Imperio", 1, resourse_sounds[25],
+                            "Superarma capaz de destruir planetas enteros.")
+
+destructor_estelar = Recurso("I009", "Destructor Estelar 🛸", "Destructor      🛸", "  (Nave)   ", "Imperio", 1, resourse_sounds[26],
+                                "Nave de guerra clase Imperial, aterradora y masiva.")
+
+tie_fighter = Recurso("I010", "TIE Fighter ✈️ ", "TIE Fighter    ✈️", "   (Nave)   ", "Imperio", 1, resourse_sounds[27],
+                        "Caza estelar imperial, rápido pero sin escudos.")
+
+at_at = Recurso("I011", "AT-AT 🦿", "AT-AT          🦿", "(Vehículo) ", "Imperio", 1, resourse_sounds[28],
+                "Caminante imperial blindado, imponente en el campo de batalla.")
+
+at_st = Recurso("I012", "AT-ST 🤖", "AT-ST          🤖", "(Vehículo) ", "Imperio", 1, resourse_sounds[29],
+                "Scout Walker, ágil y efectivo para avanzar rápido en el terreno.")
+
+sonda_droide = Recurso("I013", "Sonda Droide 👁️ ", "Sonda Droide   👁️ ", " (Droide)  ", "Imperio", 1, resourse_sounds[30],
+                        "Droide de reconocimiento para buscar bases rebeldes.")
+
+blaster_imperial = Recurso("I014", "Bláster Imperial 🔫", "Bláster Imp.   🔫", " (Equipo)  ", "Imperio", 1, resourse_sounds[31],
+                            "Arma estándar de los Stormtroopers.")
+
+red_lightsaber = Recurso("I015", "Sable de Luz ⚔️ ", "Sable de Luz   ⚔️ ", " (Equipo)  ", "Alianza", 1, resourse_sounds[32],
+                    "Espada de energía, elegante y poderosa. Usada por los Jedi y Sith.")
+
+
+
+recursos_imperio = [
+    darth_vader,
+    grand_moff_tarkin,
+    emperador_palpatine,
+    almirante_piett,
+    boba_fett,
+    stormtrooper,
+    oficial_imperial,
+    at_at_pilot,
+    estrella_muerte,
+    destructor_estelar,
+    tie_fighter,
+    at_at,
+    at_st,
+    sonda_droide,
+    blaster_imperial,
+    red_lightsaber
+]

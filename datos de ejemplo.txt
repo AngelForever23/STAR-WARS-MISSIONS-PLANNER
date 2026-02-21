@@ -1,8 +1,10 @@
-Listado de variaciones y ejemplos de los 
-recursos en cada misión de galáctica.
+Listado de variaciones y ejemplos de asignación 
+de los recursos en cada misión de galáctica.
 
 TEN EN CUENTA ⚠️
 (El límite máximo de recursos que puedes agendar por misión es 12)
+
+<<< ALIANZA REBELDE >>>
 
 M001 🏜️
 >>> 2,6,7 (Recursos mínimos de la misión)
@@ -39,3 +41,33 @@ M008 🌲
 M009 ⚔️
 >>> 0,11 
 >>> (No hay recursos opcionales)
+
+
+
+
+
+<<< IMPERIO GALÁCTICO >>>
+
+M010 ❗
+>>> 0,15,1,8,6 (Recursos mínimos de la misión)
+>>> 0,15,1,8,6, + 3,9,5,14 (Recursos mínimos + opcionales)
+
+M011 💥
+>>> 1,8 (Recursos mínimos de la misión)
+>>> 1,8, + 0,15,3,9,5,14,10,6 (Recursos mínimos + opcionales)
+
+M012 ❄️
+>>> 0,15,3,9,7,11,13 (Recursos mínimos de la misión)
+>>> 0,15,3,9,7,11,13, + 5,14,10,6 (Recursos mínimos + opcionales)
+
+M013 🧊
+>>> 0,15,4,5,14 (Recursos mínimos de la misión)
+>>> 0,15,4,5,14, + 6 (Recursos mínimos + opcionales)
+
+M014 🛠️
+>>> 0,15,5,14,6 (Recursos mínimos de la misión)
+>>> 0,15,5,14,6, + 3,9,10 (Recursos mínimos + opcionales)
+
+M015 🌲
+>>> 0,15,2,5,14,12 (Recursos mínimos de la misión)
+>>> 0,15,2,5,14,12, + 3,9,6,10 (Recursos mínimos + opcionales)

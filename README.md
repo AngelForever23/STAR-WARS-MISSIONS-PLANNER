@@ -1,16 +1,18 @@
 # STAR WARS MISSIONS PLANNER 🚀
 
+![cover art](/cover%20art.png)
+
 ## Descripción del Proyecto 📖
 
-Star Wars Missions Planner es un aplicación/videojuego de **consola (CLI)** desarrollada por "AF STUDIO" en Python. Permite la planificación de eventos (**misiones**) en un intervalo de tiempo con un **Calendario Semanal** y gestiona **recursos limitados** de la Alianza Rebelde. El sistema evita conflictos en la asignación de recursos y respeta restricciones personalizadas del universo de Star Wars.
+Star Wars Missions Planner es un aplicación/videojuego de **consola (CLI)** desarrollada por "AF STUDIO" en Python. Permite la planificación de eventos (**misiones**) en un intervalo de tiempo con un **Calendario Semanal** y gestiona **recursos limitados** de la Alianza Rebelde y el Imperio Galáctico. El sistema evita conflictos en la asignación de recursos y respeta restricciones personalizadas del universo de Star Wars.
 
 Este proyecto fue desarrollado como parte del curso de Programación de MATCOM, implementando un motor de planificación inteligente con validación de reglas complejas.
 
 ## Características Principales 🎯
 
-- Planificación de 9 misiones icónicas de la trilogía original (Episodios IV, V, VI)
-- 17 recursos únicos con propiedades específicas (personajes, naves, droides, equipo)
-- Sistema de restricciones avanzado (co-requisitos y exclusiones)
+- Planificación de 15 misiones icónicas de la trilogía original (Episodios IV, V, VI)
+- 33 recursos únicos con propiedades específicas (personajes, naves, droides, equipo)
+- Sistema de restricciones avanzado (co-requisitos y exclusiones) + (recursos necesarios y prohibidos)
 - Gestión de inventario con cantidades (pools de recursos)
 - Búsqueda automática de horarios ("Buscar Hueco")
 - Persistencia de datos en formato JSON
@@ -19,7 +21,7 @@ Este proyecto fue desarrollado como parte del curso de Programación de MATCOM, 
 
 ## DOMINIO ESCOGIDO: STAR WARS 🌌
 
-1. Rica en restricciones naturales: Los personajes tienen relaciones complejas (Han Solo y Lando son rivales, R2-D2 y C-3PO siempre van juntos, etc.)
+1. Rica en restricciones naturales: Los recursos tienen relaciones complejas (Han Solo y Lando son rivales, R2-D2 y C-3PO siempre van juntos, etc.)
 2. Recursos limitados y únicos: El Halcón Milenario, los sabables de luz, pilotos especializados
 3. Misiones icónicas bien definidas: Rescate de la Princesa Leia, Batalla de Hoth, Destrucción de la Estrella de la Muerte
 4. Alto potencial de inmersión: Permite usar música, sonidos y elementos visuales del universo
@@ -42,7 +44,7 @@ Cada índice indica un recurso que se muestran en un inventario. Los recursos po
 
 3. **Restricciones** ❌:
 Entre los recursos existen una serie de restricciones que reflejan la lógica y referencias de Star Wars en este proyecto:
-- Co-requisito: Un recurso necesita a otro
+- Co-requisito: Un recurso necesita a otro.
 Ej: El droide C-3PO necesita ir a una misión junto a su compañero R2-D2 (Porque siempre están juntos)
 Ej: Luke Skywalker (Protagonista) necesita su Sable de Luz para combatir (Un Jedi siempre lleva su arma)
 - Exclusión: Un recurso no puede estar junto a otro en una misión.
@@ -85,12 +87,16 @@ STAR-WARS-MISSIONS-PLANNER/
 │   └── Sounds/
 │
 ├── Saved Data/                 # Archivos JSON de guardado (generados automáticamente)
-│   ├── agendas_recursos.json
-│   ├── misiones_agendadas.json
-│   ├── misiones_restantes.json
-│   └── papelera.json
+│   ├── agendas_recursos_alianza.json
+│   ├── misiones_agendadas_alianza.json
+│   ├── misiones_restantes_alianza.json
+│   ├── papelera_alianza.json
+│   ├── agendas_recursos_imperio.json
+│   ├── misiones_agendadas_imperio.json
+│   ├── misiones_restantes_imperio.json
+│   └── papelera_imperio.json
 │
-├── cover art.png               # Imagen de portada del protecto (pygame en el futuro)
+├── cover art.png               # Imagen de portada del protecto
 ├── main_controller.py          # Punto de entrada principal
 ├── recursos.py                 # Definición de recursos (Clase Recurso)
 ├── misiones.py                 # Definición de misiones (Clase Evento)
@@ -99,6 +105,7 @@ STAR-WARS-MISSIONS-PLANNER/
 ├── eliminar_mision.py          # Módulo para eliminar misiones
 ├── listar_misiones.py          # Módulo para mostrar misiones agendadas
 ├── detalles.py                 # Módulo para ver detalles de recursos/misiones
+├── bando.py                    # Módulo encargado del bando que está activo
 ├── persistencia.py             # Sistema de guardado/carga en JSON
 ├── musica_sonidos.py           # Gestión de audio
 ├── utilidades.py               # Funciones auxiliares
@@ -110,7 +117,7 @@ STAR-WARS-MISSIONS-PLANNER/
 
 - Música de fondo temática según el bando
 - Efectos de sonido para cada interacción
-- Frases de personajes cuando se asignan a misiones
+- Frases y sonidos de personajes/objetos cuando se asignan a misiones
 - Arte ASCII en pantallas de bienvenida
 - Animaciones sencillas en pantallas de carga
 
@@ -154,10 +161,10 @@ Asegúrate de que la carpeta Audio/ esté en la misma ubicación que main_contro
 
 ## Próximas Actualizaciones 🔮
 
-- [☸️] Implementación del Imperio Galáctico como segundo bando jugable
+- [☸️] Implementación del Imperio Galáctico como segundo bando jugable ✅ (Completado)
 - [👥] Añadir cantidades de recursos (pools) y manejo de excepciones
-- [🏆] Sistema de logros y estadísticas
-- [🎨] Interfaz gráfica (GUI) con Streamlit
+- [🏆] Sistema de logros
+- [🎨] Interfaz gráfica (GUI)
 - [▶️] Reproducción de clips de las películas al completar misiones
 
 ## EXTRA ✨
@@ -175,4 +182,4 @@ https://starwars.fandom.com 🔗
 Si te ha gustado este proyecto, deja tu ⭐ al repositorio en Github 😺.
 
 Que la fuerza te acompañe a donde quiera que vayas... ✒️
-                                                        Obi-Wan Kenobi.
+│                                                       Obi-Wan Kenobi.
