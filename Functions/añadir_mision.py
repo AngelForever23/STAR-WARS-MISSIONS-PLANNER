@@ -133,6 +133,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
             # print(">>> EJEMPLO: 8,8,12,12")
             
             print("\n[-1] Cancelar y volver al menú principal ↩️")
+            print("[-2] Restricciones de los recursos ⚙️")
             
             print("\nSelecciona tus recursos.")
             seleccion = [int(i) for i in input("▶  ").split(",")] # Selección de los recursos en forma de lista
@@ -146,7 +147,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
             continue
             
         
-        if len(seleccion) == 1:
+        if len(seleccion) == 1: # Sección de Volver al menú principal
             for x in seleccion:
                 if x == -1:
                     mision = None
@@ -155,6 +156,36 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
                     pygame.mixer.music.load(light_side_menu)
                     pygame.mixer.music.play(-1)
                     return
+                
+                elif x == -2: # Sección para visualizar las restricciones de la Alianza
+                    sonido1.play()
+                    limpiar_terminal()
+                    print("======================================================")
+                    print("| ⚙️  Restricciones de los recursos de la Alianza 🪯   |")
+                    print("======================================================")
+                    print("| ↔️  CO-REQUISITOS                                   |")
+                    print("| Luke Skywalker 👤 <---> Sable de luz ⚔️             |")
+                    print("| Han Solo 👤 <---> Bláster 🔫                       |")
+                    print("| Lando Calrissian 👤 ---> Halcón Milenario 🛸       |")
+                    print("| R2-D2 👾  <---> C-3PO 🤖                           |")
+                    print("| X-Wing ✈️  ---> Traje de Piloto 🧥                  |")
+                    print("| A-Wing 🛩️  ---> Traje de Piloto 🧥                  |")
+                    print("| Equipo de Camuflaje 🌿  ---> Princesa Leia 👤      |")
+                    print("|====================================================|")
+                    print("| ❌ EXCLUSIONES                                     |")
+                    print("| Han Solo 👤 , Lando Calrissian 👤                  |")
+                    print("| Detonadores Térmicos 💣 , Escudo Deflector 🛡️       |")
+                    print("|====================================================|")
+                    input("\nPresiona Enter ↩️  Para volver atrás  ")
+                    sonido2.play()
+                    volver_seleccion_recursos = True
+                    break
+        
+        if volver_seleccion_recursos:
+            volver_seleccion_recursos = False
+            limpiar_terminal()
+            continue
+        
         
         error_recurso_fuera_de_rango = None
         for x in seleccion:
@@ -175,6 +206,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
             print("==================================================================")
             print(f"| ⚠️  Error. No puedes seleccionar más de {len(seleccion) - 1} recursos por misión |")
             print("==================================================================\n")
+            print(f"Última selección de recursos: {seleccion}\n")
             continue
         
         # Validar cantidades de recursos
@@ -190,6 +222,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
                 print(f"Error ❌ Solo hay {recurso.cantidad} unidad/es de {recurso.nombre} disponible/s")
                 print(f"Intentaste seleccionar {veces_seleccionado}")
                 print("===============================================================\n")
+                print(f"Última selección de recursos: {seleccion}\n")
                 error_cantidad = True
                 break
             
@@ -207,6 +240,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
         if corequisito_valor == False or exclusion_valor == False:
             print("==================================================================\n")
             sonido3.play()
+            print(f"Última selección de recursos: {seleccion}\n")
             continue
         
         # Si se seleccionó una  CANTIDAD del mismo RECURSO, hacemos una lista de los recursos seleccionados pero sin repetirlos
@@ -231,6 +265,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
             print(f"⚠️  {x} no puede estar en esta misión.")
             print("NOTA: Lee la descripción.")
             print("=====================================\n")
+            print(f"Última selección de recursos: {seleccion}\n")
             continue
         
         # Verificar si todos los recursos que necesita la misión están en la selección.
@@ -248,6 +283,7 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
                 print(f"Le faltan los recursos: {recursos_faltantes}")
                 print("NOTA: La descripción indica los recursos necesarios para la misión")
                 print("===================================================================\n")
+                print(f"Última selección de recursos: {seleccion}\n")
                 continue
         
         else: # Si no ocurre ninguna excepción, los recursos se seleccionaron perfectamente
@@ -583,6 +619,7 @@ def agendar_mision_imperio():
             # print(">>> EJEMPLO: 8,8,12,12")
             
             print("\n[-1] Cancelar y volver al menú principal ↩️")
+            print("[-2] Restricciones de los recursos ⚙️")
             
             print("\nSelecciona tus recursos.")
             seleccion = [int(i) for i in input("▶  ").split(",")] # Selección de los recursos en forma de lista
@@ -595,8 +632,9 @@ def agendar_mision_imperio():
             print("=============================================\n")
             continue
             
+        volver_seleccion_recursos = False
         
-        if len(seleccion) == 1:
+        if len(seleccion) == 1: # Sección de Volver al menú principal
             for x in seleccion:
                 if x == -1:
                     mision = None
@@ -605,6 +643,34 @@ def agendar_mision_imperio():
                     pygame.mixer.music.load(dark_side_menu)
                     pygame.mixer.music.play(-1)
                     return
+                
+                elif x == -2: # Sección para visualizar las restricciones del Imperio
+                    sonido1.play()
+                    limpiar_terminal()
+                    print("======================================================")
+                    print("|  ⚙️  Restricciones de los recursos del Imperio ☸️    |")
+                    print("======================================================")
+                    print("| ↔️  CO-REQUISITOS                                   |")
+                    print("| Darth Vader 🎭 <---> Sable de luz ⚔️                |")
+                    print("| Grand M. Tarkin 👤 <---> Estrella de la Muerte 🌑  |")
+                    print("| Destructor Estelar 🛸 ---> Almirante Piett 👤      |")
+                    print("| Piloto AT AT 🪖  <---> AT AT 🦿                     |")
+                    print("| TIE Fighter ✈️  ---> Stormtrooper 🪖                 |")
+                    print("| AT-ST 🤖 ---> Stormtrooper 🪖                       |")
+                    print("| Stormtrooper 🪖  ---> Bláster Imperial 🔫           |")
+                    print("|====================================================|")
+                    print("| ❌ EXCLUSIONES                                     |")
+                    print("| AT AT 🦿 , AT ST 🤖                                |")
+                    print("|====================================================|")
+                    input("\nPresiona Enter ↩️  Para volver atrás  ")
+                    sonido2.play()
+                    volver_seleccion_recursos = True
+                    break
+        
+        if volver_seleccion_recursos:
+            volver_seleccion_recursos = False
+            limpiar_terminal()
+            continue
         
         error_recurso_fuera_de_rango = None
         for x in seleccion:
@@ -625,6 +691,7 @@ def agendar_mision_imperio():
             print("==================================================================")
             print(f"| ⚠️  Error. No puedes seleccionar más de {len(seleccion) - 1} recursos por misión |")
             print("==================================================================\n")
+            print(f"Última selección de recursos: {seleccion}\n")
             continue
         
         # Validar cantidades de recursos
@@ -640,6 +707,7 @@ def agendar_mision_imperio():
                 print(f"Error ❌ Solo hay {recurso.cantidad} unidad/es de {recurso.nombre} disponible/s")
                 print(f"Intentaste seleccionar {veces_seleccionado}")
                 print("===============================================================\n")
+                print(f"Última selección de recursos: {seleccion}\n")
                 error_cantidad = True
                 break
             
@@ -656,6 +724,7 @@ def agendar_mision_imperio():
         # Si los co-requisitos o las exclusiones son violadas, volvemos a intentar.
         if corequisito_valor == False or exclusion_valor == False:
             print("==================================================================\n")
+            print(f"Última selección de recursos: {seleccion}\n")
             sonido3.play()
             continue
         
@@ -681,6 +750,7 @@ def agendar_mision_imperio():
             print(f"⚠️  {x} no puede estar en esta misión")
             print("NOTA: Lee la descripción.")
             print("=====================================\n")
+            print(f"Última selección de recursos: {seleccion}\n")
             continue
         
         # Verificar si todos los recursos que necesita la misión están en la selección.
@@ -698,6 +768,7 @@ def agendar_mision_imperio():
                 print(f"Le faltan los recursos: {recursos_faltantes}")
                 print("NOTA: La descripción indica los recursos necesarios para la misión")
                 print("===================================================================\n")
+                print(f"Última selección de recursos: {seleccion}\n")
                 continue
         
         else: # Si no ocurre ninguna excepción, los recursos se seleccionaron perfectamente

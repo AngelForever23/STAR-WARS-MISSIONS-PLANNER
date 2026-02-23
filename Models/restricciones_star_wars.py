@@ -7,7 +7,8 @@ restricciones_alianza = {
     "co_requisitos" : {
     "A000":"A011",  # Luke Skywalker ↔️ Sable de luz [LUKE NECESITA SU SABLE PARA PELEAR]
     "A011":"A000",
-    "A003":"A012",  # Han ➡️ Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
+    "A003":"A012",  # Han ↔️ Bláster [HAN SOLO NUNCA DEJA SU BLÁSTER ATRÁS]
+    "A012":"A003",
     "A005":"A008",  # Lando ➡️ Halcón Milenario [TANTO LANDO COMO HAN SOLO MANEJAN EL HALCÓN MILENARIO]
     "A006":"A007",  # R2D2 ↔️ C-3PO [SIEMPRE ANDAN JUNTOS]
     "A007":"A006",
@@ -19,7 +20,7 @@ restricciones_alianza = {
     # Exclusiones : (recurso1,recurso2)
     "exclusiones":[
         ("A003","A005"), # Han ❌ Lando (tensión por el Halcón, rivales de Sabacc)
-        ("A015", "A014") # Detonadores ❌ Escudo Deflector (riesgo de explosión propia)
+        ("A015", "1A014") # Detonadores ❌ Escudo Deflector (riesgo de explosión propia)
     ]
 }
 
