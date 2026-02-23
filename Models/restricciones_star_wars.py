@@ -1,4 +1,4 @@
-from Modules.utilidades import limpiar_terminal
+from Functions.utilidades import limpiar_terminal
 
 """ Reglas 🔧 del Dominio de STAR WARS 🌌 """
 

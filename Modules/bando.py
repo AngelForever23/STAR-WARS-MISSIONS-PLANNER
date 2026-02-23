@@ -19,11 +19,3 @@ def reiniciar():
     global Alianza, Imperio
     Alianza = False
     Imperio = False
-
-
-def bando_activo():
-    if Alianza:
-        return "Alianza"
-    if Imperio:
-        return "Imperio"
-    return None

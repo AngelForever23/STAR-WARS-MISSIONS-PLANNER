@@ -2,8 +2,8 @@ from Models.recursos import recursos_alianza, recursos_imperio
 from Models.misiones import misiones_alianza, misiones_imperio
 from Models.restricciones_star_wars import validar_co_requisitos_alianza,validar_exclusiones_alianza,validar_co_requisitos_imperio,validar_exclusiones_imperio
 
-from Modules.utilidades import limpiar_terminal
-from Modules.utilidades import mostrar_cargando_y_limpiar
+from Functions.utilidades import limpiar_terminal
+from Functions.utilidades import mostrar_cargando_y_limpiar
 
 from time import sleep
 from collections import Counter

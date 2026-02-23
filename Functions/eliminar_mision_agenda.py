@@ -5,7 +5,7 @@ from Models.recursos import recursos_alianza, recursos_imperio
 from Modules.musica_sonidos import sonido1
 from Modules.musica_sonidos import sonido2
 from Modules.musica_sonidos import sonido3
-from Modules.utilidades import limpiar_terminal
+from Functions.utilidades import limpiar_terminal
 
 from colorama import Fore, Back, Style, init # Importar librería de colores para strings
 init(autoreset=True)

@@ -1,5 +1,5 @@
-from Modules.utilidades import limpiar_terminal
-from Modules.utilidades import mostrar_cargando_y_limpiar
+from Functions.utilidades import limpiar_terminal
+from Functions.utilidades import mostrar_cargando_y_limpiar
 
 from colorama import Fore, Back, Style, init # Importar librería de colores para strings
 init(autoreset=True)
@@ -26,9 +26,10 @@ estado_cargado = cargar_estado()
 # Pantalla de incio 1 (Empiezas por primera vez o juegas tu partida guardada)
 limpiar_terminal()
 if not estado_cargado:
-    print("   ==========================")
-    print(f"   |      {Fore.YELLOW}{Style.BRIGHT}BIENVENIDO/A{Style.RESET_ALL}      |")
-    print("   ==========================")
+    print(" ==========================")
+    print(f" |      {Fore.YELLOW}{Style.BRIGHT}BIENVENIDO/A{Style.RESET_ALL}      |")
+    print(" ==========================")
+    print("\nNo cierres la app cuando veas este símbolo 💾")
     print("\n")
     mostrar_cargando_y_limpiar("Iniciando una nueva partida ")
     
@@ -38,6 +39,7 @@ else:
     print("==================================")
     print(f"|{Fore.GREEN}{Style.BRIGHT} ✅ Datos cargados exitosamente {Style.RESET_ALL}|")
     print("==================================")
+    print("\nNo cierres la app cuando veas este símbolo 💾")
     print("\n")
     mostrar_cargando_y_limpiar("Cargando partida guardada ")
 
@@ -160,7 +162,7 @@ def cargar_frase_y_musica_menu():
         ]
         mostrar_cargando_y_limpiar(frases[dado - 1])
         pygame.mixer.music.load(light_side)
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play()
     
     elif bando.Imperio:
         frases = [
@@ -173,7 +175,7 @@ def cargar_frase_y_musica_menu():
         ]
         mostrar_cargando_y_limpiar(frases[dado - 1])
         pygame.mixer.music.load(dark_side)
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play()
 
 
 

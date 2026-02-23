@@ -1,7 +1,7 @@
 import Modules.bando as bando
 from Functions.listar_misiones import misiones_planificadas_alianza,misiones_planificadas_imperio
 from Models.recursos import recursos_alianza,recursos_imperio
-from Modules.utilidades import limpiar_terminal
+from Functions.utilidades import limpiar_terminal
 
 from Modules.musica_sonidos import sonido1
 from Modules.musica_sonidos import sonido2

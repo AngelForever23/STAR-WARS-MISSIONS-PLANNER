@@ -90,7 +90,18 @@ STAR-WARS-MISSIONS-PLANNER/
 │   ├── añadir_mision.py                      # Módulo para agendar misiones
 │   ├── detalles.py                           # Módulo para ver detalles de recursos/misiones
 │   ├── eliminar_mision_agenda.py             # Módulo para eliminar misiones
-│   └── listar_misiones.py                    # Módulo para mostrar misiones agendadas
+│   ├── listar_misiones.py                    # Módulo para mostrar misiones agendadas
+│   └── utilidades.py                         # Funciones auxiliares
+│
+├── Models/                                   # Modelo designador de las misiones, recursos y restricciones
+│   ├── misiones.py                           # Definición de misiones (Clase Evento)
+│   ├── recursos.py                           # Definición de recursos (Clase Recurso)
+│   └── restricciones_star_wars.py            # Lógica de validación de restricciones
+│
+├── Modules/                                  # Funciones del menú principal de la app
+│   ├── bando.py                              # Módulo encargado del bando activo
+│   ├── musica_sonidos.py                     # Gestión de audio
+│   └── persistencia.py                       # Sistema de guardado/carga en JSON
 │
 ├── Saved Data/                               # Archivos JSON de guardado (generados automáticamente)
 │   ├── agendas_recursos_alianza.json
@@ -101,17 +112,6 @@ STAR-WARS-MISSIONS-PLANNER/
 │   ├── misiones_agendadas_imperio.json
 │   ├── misiones_restantes_imperio.json
 │   └── papelera_imperio.json
-│
-├── Models/                                   # Modelo designador de las misiones, recursos y restricciones
-│   ├── misiones.py                           # Definición de misiones (Clase Evento)
-│   ├── recursos.py                           # Definición de recursos (Clase Recurso)
-│   └── restricciones_star_wars.py            # Lógica de validación de restricciones
-│
-├── Modules/                                  # Funciones del menú principal de la app
-│   ├── bando.py                              # Módulo encargado del bando activo
-│   ├── musica_sonidos.py                     # Gestión de audio
-│   ├── persistencia.py                       # Sistema de guardado/carga en JSON
-│   └── utilidades.py                         # Funciones auxiliares
 │
 ├── cover art.png                             # Imagen de portada del protecto
 ├── datos_de_ejemplo.txt                      # Archivo de guía para agendar misiones

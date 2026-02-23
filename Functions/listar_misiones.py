@@ -1,5 +1,5 @@
 from Modules.musica_sonidos import sonido2
-from Modules.utilidades import limpiar_terminal
+from Functions.utilidades import limpiar_terminal
 import Modules.bando as bando
 
 # Importación de los colores para los textos
