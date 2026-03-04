@@ -147,6 +147,8 @@ def agendar_mision_alianza(): # Sección para seleccionar una Misión
             continue
             
         
+        
+        volver_seleccion_recursos = False
         if len(seleccion) == 1: # Sección de Volver al menú principal
             for x in seleccion:
                 if x == -1:
